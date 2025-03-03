@@ -1,25 +1,53 @@
-import type { MetaFunction } from "@remix-run/node";
+import type { LoaderFunction, MetaFunction } from "@remix-run/node";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
+import { tinaField, useTina } from "tinacms/dist/react";
+import client from "tina/__generated__/client";
+import { useLoaderData } from "@remix-run/react";
+import type { ComingSoonQuery } from "tina/__generated__/types";
 
 export const meta: MetaFunction = () => {
   return [
-    { title: "New Remix App" },
-    { name: "description", content: "Welcome to Remix!" },
+    { title: "BitSix Studio" },
+    { name: "description", content: "Welcome to the studio!" },
   ];
 };
 
+export const loader: LoaderFunction = async () => {
+  const response = await client.queries.comingSoon({
+    relativePath: "coming-soon.mdx",
+  });
+  return response;
+};
+
 export default function Index() {
+  const loaderData = useLoaderData<typeof loader>();
+
+  const { data } = useTina<ComingSoonQuery>(loaderData);
+
+  const comingSoon = data.comingSoon;
+
   return (
     <div className="flex flex-col items-center justify-center h-screen">
       <DotLottieReact
-        src="animations/bit-six-loading.lottie"
+        data-tina-field={tinaField(comingSoon, "logo")}
+        src={comingSoon.logo?.default ?? ""}
         className="w-2/12"
         loop
         autoplay
       />
       <div className="m-4 flex flex-col items-center">
-        <h1 className="text-4xl font-bold font-script">BitSix</h1>
-        <h1 className="text-2xl font-script">Coming Soon...</h1>
+        <h1
+          data-tina-field={tinaField(comingSoon, "header")}
+          className="text-4xl font-bold font-script"
+        >
+          {comingSoon.header}
+        </h1>
+        <h1
+          data-tina-field={tinaField(comingSoon, "subtext")}
+          className="text-2xl font-script"
+        >
+          {comingSoon.subtext}
+        </h1>
       </div>
     </div>
   );
