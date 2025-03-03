@@ -6,7 +6,7 @@ const branch =
   process.env.GITHUB_BRANCH ||
   process.env.VERCEL_GIT_COMMIT_REF ||
   process.env.HEAD ||
-  "main";
+  "deji/feat-add-tina-cms";
 
 export default defineConfig({
   branch,
