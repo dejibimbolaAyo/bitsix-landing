@@ -1,9 +1,9 @@
 import type { LoaderFunction, MetaFunction } from "@remix-run/node";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import { tinaField, useTina } from "tinacms/dist/react";
-import client from "@tina/__generated__/client";
+import client from "tina/__generated__/client";
 import { useLoaderData } from "@remix-run/react";
-import type { CommingSoonQuery } from "@tina/__generated__/types";
+import type { CommingSoonQuery } from "tina/__generated__/types";
 
 export const meta: MetaFunction = () => {
   return [
