@@ -1,8 +1,8 @@
 import type { Collection } from "tinacms";
 
 export const ComingSoon: Collection = {
-    label: "Comming Soon Content",
-    name: "commingSoon",
+    label: "Coming Soon Content",
+    name: "comingSoon",
     path: "content/page",
     format: "mdx",
     fields: [

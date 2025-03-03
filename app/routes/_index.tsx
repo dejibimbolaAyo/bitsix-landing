@@ -3,7 +3,7 @@ import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import { tinaField, useTina } from "tinacms/dist/react";
 import client from "tina/__generated__/client";
 import { useLoaderData } from "@remix-run/react";
-import type { CommingSoonQuery } from "tina/__generated__/types";
+import type { ComingSoonQuery } from "tina/__generated__/types";
 
 export const meta: MetaFunction = () => {
   return [
@@ -13,7 +13,7 @@ export const meta: MetaFunction = () => {
 };
 
 export const loader: LoaderFunction = async () => {
-  const response = await client.queries.commingSoon({
+  const response = await client.queries.comingSoon({
     relativePath: "coming-soon.mdx",
   });
   return response;
@@ -22,9 +22,9 @@ export const loader: LoaderFunction = async () => {
 export default function Index() {
   const loaderData = useLoaderData<typeof loader>();
 
-  const { data } = useTina<CommingSoonQuery>(loaderData);
+  const { data } = useTina<ComingSoonQuery>(loaderData);
 
-  const comingSoon = data.commingSoon;
+  const comingSoon = data.comingSoon;
 
   return (
     <div className="flex flex-col items-center justify-center h-screen">
