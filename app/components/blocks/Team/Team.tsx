@@ -1,6 +1,7 @@
 import { AboutBlocksTeam } from "@tina/__generated__/types";
 import React from "react";
 import { tinaField } from "tinacms/dist/react";
+import { motion } from "framer-motion";
 
 export interface TeamProps {
   data: AboutBlocksTeam;
@@ -35,57 +36,78 @@ const Team: React.FC<TeamProps> = ({ data }) => {
   const { eyebrow, title, description, members = [] } = data;
 
   return (
-    <section className="py-16 md:py-24">
-      <div className="max-w-7xl mx-auto px-4">
+    <section className="relative overflow-hidden py-24 md:py-32 bg-primary/2">
+      <div className="max-w-7xl mx-auto px-4 relative">
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-24">
           {eyebrow && (
-            <span
-              className="text-sm font-medium text-primary mb-2 block"
+            <motion.span
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="text-sm font-medium text-primary mb-4 flex items-center justify-center gap-2"
               data-tina-field={tinaField(data, "eyebrow")}
             >
+              <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
               {eyebrow}
-            </span>
+            </motion.span>
           )}
-          <h2
-            className="text-4xl font-bold mb-4"
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="text-4xl md:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary via-secondary to-primary/90"
             data-tina-field={tinaField(data, "title")}
           >
             {title}
-          </h2>
+          </motion.h2>
           {description && (
-            <p
-              className="text-lg text-neutral"
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="text-lg text-muted-foreground/90"
               data-tina-field={tinaField(data, "description")}
             >
               {description}
-            </p>
+            </motion.p>
           )}
         </div>
 
         {/* Team Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
           {members?.map(
             (member, index) =>
               member && (
-                <div
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
                   key={index}
-                  className="group"
+                  className="group relative"
                   data-tina-field={tinaField(data.members?.[index])}
                 >
-                  {/* Image */}
-                  <div className="aspect-[4/3] mb-6 bg-base-200 rounded-lg overflow-hidden">
+                  {/* Card Background */}
+                  <div className="absolute inset-0 bg-gradient-to-b from-transparent to-card/30 rounded-3xl backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-all duration-500" />
+
+                  {/* Image Container */}
+                  <div className="relative mb-6 rounded-2xl overflow-hidden bg-gradient-to-b from-primary/5 to-secondary/5">
+                    <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-secondary/10 mix-blend-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                     {member.image ? (
                       <img
                         src={member.image}
                         alt={member.name}
-                        className="w-full h-full object-cover"
+                        className="w-full aspect-[3/4] object-cover object-center group-hover:scale-105 transition-transform duration-500"
                         data-tina-field={tinaField(member, "image")}
                       />
                     ) : (
-                      <div className="w-full h-full flex items-center justify-center text-base-content/20">
+                      <div className="w-full aspect-[3/4] flex items-center justify-center bg-card">
                         <svg
-                          className="w-16 h-16"
+                          className="w-16 h-16 text-muted-foreground/20"
                           viewBox="0 0 24 24"
                           fill="currentColor"
                         >
@@ -96,21 +118,21 @@ const Team: React.FC<TeamProps> = ({ data }) => {
                   </div>
 
                   {/* Content */}
-                  <div>
+                  <div className="relative z-10 text-center">
                     <h3
-                      className="text-lg font-semibold mb-1"
+                      className="text-2xl font-semibold mb-2 group-hover:text-primary transition-colors duration-300"
                       data-tina-field={tinaField(member, "name")}
                     >
                       {member.name}
                     </h3>
                     <p
-                      className="text-sm text-neutral mb-3"
+                      className="text-base text-secondary/90 font-medium mb-4"
                       data-tina-field={tinaField(member, "role")}
                     >
                       {member.role}
                     </p>
                     <p
-                      className="text-sm text-neutral mb-4"
+                      className="text-sm text-muted-foreground/80 mb-6 line-clamp-3"
                       data-tina-field={tinaField(member, "bio")}
                     >
                       {member.bio}
@@ -118,7 +140,7 @@ const Team: React.FC<TeamProps> = ({ data }) => {
 
                     {/* Social Links */}
                     {member.socialLinks && member.socialLinks.length > 0 && (
-                      <div className="flex gap-3">
+                      <div className="flex gap-4 justify-center">
                         {member.socialLinks
                           .filter((link): link is NonNullable<typeof link> =>
                             Boolean(link)
@@ -129,7 +151,7 @@ const Team: React.FC<TeamProps> = ({ data }) => {
                               href={link.url}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="text-neutral hover:text-primary transition-colors"
+                              className="text-muted-foreground/60 hover:text-primary transition-colors duration-300"
                               data-tina-field={tinaField(link)}
                             >
                               <SocialIcon platform={link.platform} />
@@ -138,7 +160,7 @@ const Team: React.FC<TeamProps> = ({ data }) => {
                       </div>
                     )}
                   </div>
-                </div>
+                </motion.div>
               )
           )}
         </div>
