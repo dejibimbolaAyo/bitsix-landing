@@ -61,7 +61,7 @@ const WhatWeDo: React.FC<WhatWeDoProps> = ({ data }) => {
               transition={{ duration: 0.5, delay: 0.3 }}
               className="px-8 py-3 bg-primary text-white rounded-full font-medium hover:bg-primary/90 transition-colors duration-300"
             >
-              Consultation Today
+              Consult with us today
             </motion.button>
           </div>
 

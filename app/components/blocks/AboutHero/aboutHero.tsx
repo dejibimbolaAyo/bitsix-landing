@@ -12,7 +12,7 @@ const AboutHero: React.FC<AboutHeroProps> = ({ data }) => {
   return (
     <div className="relative">
       {/* Hero Section */}
-      <section className="relative min-h-[40vh] flex items-center">
+      <section className="relative min-h-[65vh] flex items-center">
         {/* Background Elements */}
         <div className="absolute inset-0 overflow-hidden">
           {/* Gradient Background */}
@@ -41,7 +41,7 @@ const AboutHero: React.FC<AboutHeroProps> = ({ data }) => {
 
             {/* Title */}
             <h1
-              className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary via-primary/90 to-primary/80"
+              className="text-5xl md:text-4xl lg:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary via-primary/90 to-primary/80"
               data-tina-field={tinaField(data, "heroTitle")}
             >
               {heroTitle}
