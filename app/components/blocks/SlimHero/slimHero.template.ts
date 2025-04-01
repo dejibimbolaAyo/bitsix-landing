@@ -1,6 +1,6 @@
-import { Template } from "tinacms";
+import { TinaTemplate } from "tinacms";
 
-export const slimHeroTemplate: Template = {
+export const slimHeroTemplate: TinaTemplate = {
     name: "slimHero",
     label: "Slim Hero",
     fields: [
@@ -20,7 +20,7 @@ export const slimHeroTemplate: Template = {
             type: "image",
             name: "backgroundImage",
             label: "Background Image",
-            required: true,
+            required: false,
         },
     ],
 }; 
