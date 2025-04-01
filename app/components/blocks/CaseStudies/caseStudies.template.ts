@@ -7,14 +7,9 @@ export const caseStudiesTemplate: Template = {
         {
             type: "string",
             name: "headline",
-            label: "Headline",
-            required: true,
-        },
-        {
-            type: "rich-text",
-            name: "description",
-            label: "Description",
-            required: true,
+            label: "Section Headline",
+            description: "Appears above the case studies grid",
+            required: false,
         },
         {
             type: "object",
@@ -25,19 +20,31 @@ export const caseStudiesTemplate: Template = {
                 {
                     type: "string",
                     name: "title",
-                    label: "Title",
+                    label: "Article Title",
                     required: true,
                 },
                 {
                     type: "string",
                     name: "description",
-                    label: "Description",
+                    label: "Article Description",
                     required: true,
                 },
                 {
                     type: "image",
                     name: "image",
-                    label: "Image",
+                    label: "Featured Image",
+                    required: true,
+                },
+                {
+                    type: "string",
+                    name: "author",
+                    label: "Author Name",
+                    required: true,
+                },
+                {
+                    type: "string",
+                    name: "date",
+                    label: "Publication Date",
                     required: true,
                 },
                 {
@@ -48,9 +55,15 @@ export const caseStudiesTemplate: Template = {
                 },
                 {
                     type: "string",
+                    name: "industry",
+                    label: "Industry",
+                    required: false,
+                },
+                {
+                    type: "string",
                     name: "results",
                     label: "Results",
-                    required: true,
+                    required: false,
                 },
             ],
         },
