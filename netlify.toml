@@ -6,6 +6,10 @@ publish = "build/client"
 command = "npm run dev"
 framework = "vite"
 
+[functions]
+directory = "./build/server"
+included_files = ["./build/server/index.js"]
+
 # Set immutable caching for static files, because they have fingerprinted filenames
 
 [[headers]]

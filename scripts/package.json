@@ -1,0 +1,8 @@
+{
+  "name": "bitsix-scripts",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}
