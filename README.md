@@ -1,68 +1,51 @@
-# Welcome to Remix!
+# BitSix Marketing Website
 
-- [Remix Docs](https://remix.run/docs)
-- [Netlify Functions Overview](https://docs.netlify.com/functions/overview)
+This is the marketing website for BitSix Studio, built with Remix and TinaCMS.
 
-## Netlify Setup
+## Page Generator Tool
 
-1. Install the [Netlify CLI](https://docs.netlify.com/cli/get-started/):
+This project includes a custom page generator tool that makes it easy to create new pages for the website.
 
-```sh
-npm i -g netlify-cli
+### Features
+
+- Quickly scaffold new pages with TinaCMS integration
+- Generate components and templates automatically
+- AI-powered content generation using OpenAI (optional)
+- Support for dynamic routes
+- Written in TypeScript for improved reliability
+
+### Usage
+
+To use the page generator:
+
+```bash
+npm run tools
 ```
 
-If you have previously installed the Netlify CLI, you should update it to the latest version:
+This will open the tools menu. Select "Generate Page" to start the page generator.
 
-```sh
-npm i -g netlify-cli@latest
+Alternatively, you can run the page generator directly:
+
+```bash
+npm run generate-page
 ```
 
-2. Sign up and log in to Netlify:
-
-```sh
-netlify login
-```
-
-3. Create a new site:
-
-```sh
-netlify init
-```
+See the [Page Generator Documentation](./scripts/README.md) for more details.
 
 ## Development
 
-Ensure all packages are installed by running:
-
-```sh
-npm install
+```bash
+# Start development server with TinaCMS
+npm run dev
 ```
 
-Run
+## Build
 
-```sh
-netlify dev
+```bash
+# Build for production
+npm run build
 ```
 
-Open up [http://localhost:8888](http://localhost:8888), and you're ready to go!
+## License
 
-### Serve your site locally
-
-To serve your site locally in a production-like environment, run
-
-```sh
-netlify serve
-```
-
-Your site will be available at [http://localhost:8888](http://localhost:8888). Note that it will not auto-reload when you make changes.
-
-## Deployment
-
-There are two ways to deploy your app to Netlify, you can either link your app to your git repo and have it auto deploy changes to Netlify, or you can deploy your app manually. If you've followed the setup instructions already, all you need to do is run this:
-
-```sh
-# preview deployment
-netlify deploy --build
-
-# production deployment
-netlify deploy --build --prod
-```
+BitSix Marketing Website © 2023. All rights reserved.
