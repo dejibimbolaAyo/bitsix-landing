@@ -49,14 +49,14 @@ export const action = async ({ request }: ActionFunctionArgs) => {
   const formData = await request.formData();
   const rawData = {
     timestamp: new Date().toISOString(),
-    fullName: formData.get("fullName"),
-    email: formData.get("email"),
-    phone: formData.get("phone"),
-    company: formData.get("company"),
-    projectType: formData.get("projectType"),
-    help: formData.get("help"),
-    budget: formData.get("budget"),
-    contactMethod: formData.get("contactMethod"),
+    fullName: formData.get("fullName") || undefined,
+    email: formData.get("email") || undefined,
+    phone: formData.get("phone") || undefined,
+    company: formData.get("company") || undefined,
+    projectType: formData.get("projectType") || undefined,
+    help: formData.get("help") || undefined,
+    budget: formData.get("budget") || undefined,
+    contactMethod: formData.get("contactMethod") || undefined,
   };
 
   // Validate form data using Zod
