@@ -28,6 +28,7 @@
     "framer-motion": "^12.6.2",
     "inquirer": "^9.3.7",
     "isbot": "^4.1.0",
+    "react-hot-toast": "^2.5.2",
     "remix-flat-routes": "^0.8.5",
     "tailwind-merge": "^3.0.2",
     "tinacms": "^2.7.2"

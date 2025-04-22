@@ -1,4 +1,4 @@
-import { json } from "@remix-run/node";
+import { ActionFunctionArgs, json } from "@remix-run/node";
 import { MetaFunction, useLoaderData } from "@remix-run/react";
 import { useTina } from "tinacms/dist/react";
 
@@ -13,7 +13,46 @@ export const meta: MetaFunction = () => {
   ];
 };
 
+export const action = async ({ request }: ActionFunctionArgs) => {
+  const env = process.env;
+  const googleSheetsUrl = env.GOOGLE_SHEETS_WEBAPP_URL;
+
+  const formData = await request.formData();
+  const data = {
+    timestamp: new Date().toISOString(),
+    fullName: formData.get("fullName"),
+    email: formData.get("email"),
+    phone: formData.get("phone"),
+    company: formData.get("company"),
+    projectType: formData.get("projectType"),
+    help: formData.get("help"),
+    budget: formData.get("budget"),
+    contactMethod: formData.get("contactMethod"),
+  };
+
+  try {
+    const response = await fetch(googleSheetsUrl ?? "", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+
+    if (!response.ok) {
+      throw new Error("Failed to submit form");
+    }
+
+    return { success: true };
+  } catch (error) {
+    return { success: false, error: "Failed to submit form" };
+  }
+};
+
 export const loader = async () => {
+  // Get the env variables
+  const env = process.env;
+
   try {
     const pageQuery = await client.queries.contact({
       relativePath: "contact.mdx",
@@ -25,6 +64,7 @@ export const loader = async () => {
 
     return json({
       query: pageQuery,
+      sheetsUrl: env.GOOGLE_SHEETS_WEBAPP_URL,
     });
   } catch (error) {
     console.error("Error loading data:", error);
