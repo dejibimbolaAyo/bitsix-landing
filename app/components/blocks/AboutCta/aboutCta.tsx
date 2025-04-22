@@ -1,6 +1,7 @@
+import { ArrowRight } from "lucide-react";
 import React from "react";
 import { tinaField } from "tinacms/dist/react";
-import { ArrowRight } from "lucide-react";
+
 import type { AboutBlocksAboutCta } from "@tina/__generated__/types";
 
 interface AboutCtaProps {

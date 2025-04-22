@@ -1,9 +1,10 @@
+import { Link } from "@remix-run/react";
 import React from "react";
+
 import {
   BlogPageBlocksBlogList,
   BlogPostConnectionQuery,
 } from "@tina/__generated__/types";
-import { Link } from "@remix-run/react";
 
 interface BlogListProps {
   data: BlogPostConnectionQuery;

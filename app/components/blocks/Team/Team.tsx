@@ -1,7 +1,8 @@
-import { AboutBlocksTeam } from "@tina/__generated__/types";
+import { motion } from "framer-motion";
 import React from "react";
 import { tinaField } from "tinacms/dist/react";
-import { motion } from "framer-motion";
+
+import { AboutBlocksTeam } from "@tina/__generated__/types";
 
 export interface TeamProps {
   data: AboutBlocksTeam;

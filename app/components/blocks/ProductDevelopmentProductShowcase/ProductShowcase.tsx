@@ -1,5 +1,6 @@
 import React from "react";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
+
 import { ProductDevelopmentBlocksProductDevelopmentProductShowcase } from "@tina/__generated__/types";
 interface ProductDevelopmentProductShowcaseProps {
   data: ProductDevelopmentBlocksProductDevelopmentProductShowcase;

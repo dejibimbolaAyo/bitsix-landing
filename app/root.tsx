@@ -1,3 +1,5 @@
+import { json, type LoaderFunction } from "@remix-run/node";
+import { LinksFunction } from "@remix-run/node";
 import {
   Links,
   Meta,
@@ -6,15 +8,13 @@ import {
   ScrollRestoration,
   useLoaderData,
 } from "@remix-run/react";
-import { json, type LoaderFunction } from "@remix-run/node";
+import { useTina } from "tinacms/dist/react";
 
 import styles from "./style.css?url";
-import { LinksFunction } from "@remix-run/node";
+import Footer from "@app/components/blocks/Footer/footer";
+import Navbar from "@app/components/blocks/Navbar/navbar";
 import { client } from "@tina/__generated__/client";
 import type { FooterQuery, NavbarQuery } from "@tina/__generated__/types";
-import { useTina } from "tinacms/dist/react";
-import Navbar from "@app/components/blocks/Navbar/navbar";
-import Footer from "@app/components/blocks/Footer/footer";
 
 export const links: LinksFunction = () => [
   { rel: "stylesheet", href: styles },

@@ -1,9 +1,10 @@
 import React from "react";
-import type { TestimonialsQuery } from "@tina/__generated__/types";
 
-import TestimonialsHero from "@app/components/blocks/TestimonialsHero/Hero";
+
 import TestimonialsFeaturedTestimonials from "@app/components/blocks/TestimonialsFeaturedTestimonials/FeaturedTestimonials";
+import TestimonialsHero from "@app/components/blocks/TestimonialsHero/Hero";
 import TestimonialsTestimonialsList from "@app/components/blocks/TestimonialsTestimonialsList/TestimonialsList";
+import type { TestimonialsQuery } from "@tina/__generated__/types";
 
 interface PageProps {
   data: TestimonialsQuery;

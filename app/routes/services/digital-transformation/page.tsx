@@ -1,10 +1,11 @@
 import React from "react";
-import type { DigitalTransformationQuery } from "tina/__generated__/types";
 
-import SlimHero from "@app/components/blocks/SlimHero/slimHero";
-import ServiceContent from "@app/components/blocks/ServiceContent/serviceContent";
+
 import CaseStudies from "@app/components/blocks/CaseStudies/caseStudies";
+import ServiceContent from "@app/components/blocks/ServiceContent/serviceContent";
+import SlimHero from "@app/components/blocks/SlimHero/slimHero";
 import Testimonials from "@app/components/blocks/Testimonials/testimonials";
+import type { DigitalTransformationQuery } from "tina/__generated__/types";
 
 interface PageProps {
   data: DigitalTransformationQuery;

@@ -1,7 +1,8 @@
-import React from "react";
-import { tinaField } from "tinacms/dist/react";
 import { motion } from "framer-motion";
 import { Palette, Clapperboard, DollarSign } from "lucide-react";
+import React from "react";
+import { tinaField } from "tinacms/dist/react";
+
 import type { AboutBlocksAboutContent } from "@tina/__generated__/types";
 
 interface WhatWeDoProps {

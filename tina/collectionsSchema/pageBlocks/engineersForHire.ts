@@ -1,12 +1,12 @@
 import type { Collection } from "tinacms";
 
-import { engineersForHireHeroTemplate } from "@app/components/blocks/EngineersForHireHero/hero.template";
-import { engineersForHireWhyHireEngineersTemplate } from "@app/components/blocks/EngineersForHireWhyHireEngineers/WhyHireEngineers.template";
-import { engineersForHireHowBitSixEngineersHelpsTemplate } from "@app/components/blocks/EngineersForHireHowBitSixEngineersHelps/HowBitSixEngineersHelps.template";
-import { engineersForHireServicesOfferedTemplate } from "@app/components/blocks/EngineersForHireServicesOffered/ServicesOffered.template";
-import { engineersForHireIdealClientsTemplate } from "@app/components/blocks/EngineersForHireIdealClients/IdealClients.template";
 import { engineersForHireEngagementProcessTemplate } from "@app/components/blocks/EngineersForHireEngagementProcess/EngagementProcess.template";
+import { engineersForHireHeroTemplate } from "@app/components/blocks/EngineersForHireHero/hero.template";
+import { engineersForHireHowBitSixEngineersHelpsTemplate } from "@app/components/blocks/EngineersForHireHowBitSixEngineersHelps/HowBitSixEngineersHelps.template";
+import { engineersForHireIdealClientsTemplate } from "@app/components/blocks/EngineersForHireIdealClients/IdealClients.template";
+import { engineersForHireServicesOfferedTemplate } from "@app/components/blocks/EngineersForHireServicesOffered/ServicesOffered.template";
 import { engineersForHireTestimonialsAndCaseStudiesTemplate } from "@app/components/blocks/EngineersForHireTestimonialsAndCaseStudies/TestimonialsAndCaseStudies.template";
+import { engineersForHireWhyHireEngineersTemplate } from "@app/components/blocks/EngineersForHireWhyHireEngineers/WhyHireEngineers.template";
 
 export const engineersForHirePageBlocksCollection: Collection = {
     label: "EngineersForHire",

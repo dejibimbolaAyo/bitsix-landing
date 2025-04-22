@@ -1,13 +1,14 @@
 import React from "react";
-import type { EngineersForHireQuery } from "@tina/__generated__/types";
 
-import EngineersForHireHero from "@app/components/blocks/EngineersForHireHero/hero";
-import EngineersForHireWhyHireEngineers from "@app/components/blocks/EngineersForHireWhyHireEngineers/WhyHireEngineers";
-import EngineersForHireHowBitSixEngineersHelps from "@app/components/blocks/EngineersForHireHowBitSixEngineersHelps/HowBitSixEngineersHelps";
-import EngineersForHireServicesOffered from "@app/components/blocks/EngineersForHireServicesOffered/ServicesOffered";
-import EngineersForHireIdealClients from "@app/components/blocks/EngineersForHireIdealClients/IdealClients";
+
 import EngineersForHireEngagementProcess from "@app/components/blocks/EngineersForHireEngagementProcess/EngagementProcess";
+import EngineersForHireHero from "@app/components/blocks/EngineersForHireHero/hero";
+import EngineersForHireHowBitSixEngineersHelps from "@app/components/blocks/EngineersForHireHowBitSixEngineersHelps/HowBitSixEngineersHelps";
+import EngineersForHireIdealClients from "@app/components/blocks/EngineersForHireIdealClients/IdealClients";
+import EngineersForHireServicesOffered from "@app/components/blocks/EngineersForHireServicesOffered/ServicesOffered";
 import EngineersForHireTestimonialsAndCaseStudies from "@app/components/blocks/EngineersForHireTestimonialsAndCaseStudies/TestimonialsAndCaseStudies";
+import EngineersForHireWhyHireEngineers from "@app/components/blocks/EngineersForHireWhyHireEngineers/WhyHireEngineers";
+import type { EngineersForHireQuery } from "@tina/__generated__/types";
 
 interface PageProps {
   data: EngineersForHireQuery;

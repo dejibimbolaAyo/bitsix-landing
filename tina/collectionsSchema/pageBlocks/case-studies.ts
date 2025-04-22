@@ -1,8 +1,8 @@
 import type { Collection } from "tinacms";
 
-import { caseStudiesHeroTemplate } from "@app/components/blocks/CaseStudiesHero/Hero.template";
-import { caseStudiesFeaturedCaseStudiesTemplate } from "@app/components/blocks/CaseStudiesFeaturedCaseStudies/FeaturedCaseStudies.template";
 import { caseStudiesCaseStudiesTemplate } from "@app/components/blocks/CaseStudiesCaseStudies/CaseStudies.template";
+import { caseStudiesFeaturedCaseStudiesTemplate } from "@app/components/blocks/CaseStudiesFeaturedCaseStudies/FeaturedCaseStudies.template";
+import { caseStudiesHeroTemplate } from "@app/components/blocks/CaseStudiesHero/Hero.template";
 
 export const caseStudiesPageBlocksCollection: Collection = {
     label: "CaseStudies",

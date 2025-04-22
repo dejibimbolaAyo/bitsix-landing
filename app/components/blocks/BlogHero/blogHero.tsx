@@ -1,6 +1,7 @@
 import React from "react";
-import { BlogPageBlocksBlogHero } from "@tina/__generated__/types";
 import { tinaField } from "tinacms/dist/react";
+
+import { BlogPageBlocksBlogHero } from "@tina/__generated__/types";
 
 interface BlogHeroProps {
   data: BlogPageBlocksBlogHero & {

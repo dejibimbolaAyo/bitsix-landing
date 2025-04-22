@@ -1,5 +1,6 @@
 import React from "react";
 import { tinaField } from "tinacms/dist/react";
+
 import type { BlogPageBlocksNewsletter } from "tina/__generated__/types";
 
 interface NewsletterProps {

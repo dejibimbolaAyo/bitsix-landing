@@ -1,10 +1,11 @@
-import { useLoaderData } from "@remix-run/react";
 import { json, LoaderFunction } from "@remix-run/node";
-import { client } from "@tina/__generated__/client";
-import type { BlogPostQuery } from "@tina/__generated__/types";
+import { useLoaderData } from "@remix-run/react";
 import { useTina, tinaField } from "tinacms/dist/react";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
+
 import { components } from "@app/components/ui/BlogPost/custom-components";
+import { client } from "@tina/__generated__/client";
+import type { BlogPostQuery } from "@tina/__generated__/types";
 
 export const loader: LoaderFunction = async ({ params }) => {
   try {

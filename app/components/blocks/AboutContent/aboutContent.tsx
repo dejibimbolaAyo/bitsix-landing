@@ -1,9 +1,10 @@
 import React from "react";
-import type { AboutBlocksAboutContent } from "@tina/__generated__/types";
+
+import HowWeWork from "./sections/HowWeWork";
 import Introduction from "./sections/Introduction";
 import WhatWeDo from "./sections/WhatWeDo";
-import HowWeWork from "./sections/HowWeWork";
 import WhyBitSix from "./sections/WhyBitSix";
+import type { AboutBlocksAboutContent } from "@tina/__generated__/types";
 
 interface AboutContentProps {
   data: AboutBlocksAboutContent;

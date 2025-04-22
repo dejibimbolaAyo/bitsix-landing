@@ -1,9 +1,10 @@
 import React from "react";
+
+import CaseStudiesCaseStudies from "@app/components/blocks/CaseStudiesCaseStudies/CaseStudies";
+import CaseStudiesFeaturedCaseStudies from "@app/components/blocks/CaseStudiesFeaturedCaseStudies/FeaturedCaseStudies";
+import CaseStudiesHero from "@app/components/blocks/CaseStudiesHero/Hero";
 import type { CaseStudiesQuery } from "@tina/__generated__/types";
 
-import CaseStudiesHero from "@app/components/blocks/CaseStudiesHero/Hero";
-import CaseStudiesFeaturedCaseStudies from "@app/components/blocks/CaseStudiesFeaturedCaseStudies/FeaturedCaseStudies";
-import CaseStudiesCaseStudies from "@app/components/blocks/CaseStudiesCaseStudies/CaseStudies";
 
 interface PageProps {
   data: CaseStudiesQuery;

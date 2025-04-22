@@ -1,8 +1,9 @@
+import type { Collection } from "tinacms";
+
 import { caseStudiesTemplate } from "@app/components/blocks/CaseStudies/caseStudies.template";
 import { serviceContentTemplate } from "@app/components/blocks/ServiceContent/serviceContent.template";
 import { slimHeroTemplate } from "@app/components/blocks/SlimHero/slimHero.template";
 import { testimonialsTemplate } from "@app/components/blocks/Testimonials/testimonials.template";
-import type { Collection } from "tinacms";
 
 export const digitalTransformationPageBlocksCollection: Collection = {
     label: "Digital Transformation",

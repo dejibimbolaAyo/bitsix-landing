@@ -1,5 +1,5 @@
-import { MetaFunction, useLoaderData, useParams } from "@remix-run/react";
     import { json } from "@remix-run/node";
+import { MetaFunction, useLoaderData, useParams } from "@remix-run/react";
 
     export const meta: MetaFunction = () => {
       return [
