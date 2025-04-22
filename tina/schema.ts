@@ -1,4 +1,5 @@
 import { defineSchema } from "tinacms";
+import { contactPageBlocksCollection } from "./collectionsSchema/pageBlocks/contact";
 
 import { blogCollection } from "./collectionsSchema/blog/blog";
 import { postCollection } from "./collectionsSchema/blog/post";
@@ -17,6 +18,7 @@ import { testimonialsPageBlocksCollection } from "./collectionsSchema/pageBlocks
 
 export const schema = defineSchema({
     collections: [
+        contactPageBlocksCollection,
         caseStudiesPageBlocksCollection,
         testimonialsPageBlocksCollection,
         ctoForHirePageBlocksCollection,

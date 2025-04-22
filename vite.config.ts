@@ -11,6 +11,7 @@ export default defineConfig({
       routes(defineRoutes) {
         return defineRoutes((route) => {
           route("/", "routes/home/route.tsx", { index: true });
+          route("/contact", "routes/contact/route.tsx");
           route("/resources/case-studies", "routes/resources/case-studies/route.tsx");
           route("/resources/case-studies/:slug", "routes/resources/case-studies/slug.tsx");
           route("/resources/testimonials", "routes/resources/testimonials/route.tsx");
@@ -23,6 +24,8 @@ export default defineConfig({
           route("/blog/:slug", "routes/blog/post.tsx");
           route("/services/digital-transformation", "routes/services/digital-transformation/route.tsx");
           route("/sitemap.xml", "routes/sitemap[.]xml.tsx");
+
+          route("/admin", "routes/admin.tsx");
         });
       },
     }),
