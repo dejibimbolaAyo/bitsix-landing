@@ -1,4 +1,5 @@
 import { defineConfig } from "tinacms";
+
 import { schema } from "./schema";
 
 // Your hosting provider likely exposes this as an environment variable

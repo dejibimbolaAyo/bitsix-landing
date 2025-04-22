@@ -1,6 +1,7 @@
-import { EngineersForHireBlocksEngineersForHireWhyHireEngineers } from "@tina/__generated__/types";
 import React from "react";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
+
+import { EngineersForHireBlocksEngineersForHireWhyHireEngineers } from "@tina/__generated__/types";
 
 interface EngineersForHireWhyHireEngineersProps {
   data: EngineersForHireBlocksEngineersForHireWhyHireEngineers;

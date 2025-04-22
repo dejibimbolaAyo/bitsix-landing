@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
 import fs from 'node:fs';
+import https from 'node:https';
 import path from 'node:path';
 import readline from 'node:readline';
-import https from 'node:https';
 
 const rl = readline.createInterface({
     input: process.stdin,

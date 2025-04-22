@@ -1,10 +1,10 @@
 import React from "react";
-import type { ProductDevelopmentQuery } from "@tina/__generated__/types";
 
+import ProductDevelopmentBuildingWithUs from "@app/components/blocks/ProductDevelopmentBuildingWithUs/BuildingWithUs";
 import ProductDevelopmentHero from "@app/components/blocks/ProductDevelopmentHero/Hero";
 import ProductDevelopmentProductShowcase from "@app/components/blocks/ProductDevelopmentProductShowcase/ProductShowcase";
 import ProductDevelopmentTestimonials from "@app/components/blocks/ProductDevelopmentTestimonials/Testimonials";
-import ProductDevelopmentBuildingWithUs from "@app/components/blocks/ProductDevelopmentBuildingWithUs/BuildingWithUs";
+import type { ProductDevelopmentQuery } from "@tina/__generated__/types";
 
 interface PageProps {
   data: ProductDevelopmentQuery;

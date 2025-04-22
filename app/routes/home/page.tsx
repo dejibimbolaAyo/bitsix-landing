@@ -1,9 +1,10 @@
 import React from "react";
-import type { HomeQuery } from "@tina/__generated__/types";
+
 
 import Expertise from "@app/components/blocks/Expertise/expertise";
 import Hero from "@app/components/blocks/Hero/hero";
 import Innovation from "@app/components/blocks/Innovation/innovation";
+import type { HomeQuery } from "@tina/__generated__/types";
 
 interface PageProps {
   data: HomeQuery;

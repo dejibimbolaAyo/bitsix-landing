@@ -1,5 +1,6 @@
 import React from "react";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
+
 import { ProductDevelopmentBlocksProductDevelopmentHero } from "@tina/__generated__/types";
 interface ProductDevelopmentHeroProps {
   data: ProductDevelopmentBlocksProductDevelopmentHero;

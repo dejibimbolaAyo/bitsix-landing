@@ -1,7 +1,8 @@
-import React, { useEffect } from "react";
-import { tinaField } from "tinacms/dist/react";
 import { useLocation } from "@remix-run/react";
 import { Workflow, Target, Rocket } from "lucide-react";
+import React, { useEffect } from "react";
+import { tinaField } from "tinacms/dist/react";
+
 import type { AboutBlocksAboutContent } from "@tina/__generated__/types";
 
 interface HowWeWorkProps {

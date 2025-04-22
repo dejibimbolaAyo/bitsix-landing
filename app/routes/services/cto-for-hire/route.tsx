@@ -1,9 +1,12 @@
-import { MetaFunction, useLoaderData } from "@remix-run/react";
 import { json } from "@remix-run/node";
+import { MetaFunction, useLoaderData } from "@remix-run/react";
+import { useTina } from "tinacms/dist/react";
+
+import { CtoForHirePage } from "./page";
 import { client } from "@tina/__generated__/client";
 import type { CtoForHireQuery } from "@tina/__generated__/types";
-import { useTina } from "tinacms/dist/react";
-import { CtoForHirePage } from "./page";
+
+
 
 export const meta: MetaFunction = () => {
   return [

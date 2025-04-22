@@ -1,6 +1,7 @@
-import React, { useState, useRef, useEffect } from "react";
 import { Link } from "@remix-run/react";
+import React, { useState, useRef, useEffect } from "react";
 import { tinaField } from "tinacms/dist/react";
+
 import { NavbarQuery, NavbarMenu } from "@tina/__generated__/types";
 interface NavbarProps {
   data: NavbarQuery;

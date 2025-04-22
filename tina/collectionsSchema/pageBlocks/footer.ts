@@ -1,4 +1,5 @@
 import type { Collection } from "tinacms";
+
 import { footerTemplate } from "@app/components/blocks/Footer/footer.template";
 
 export const footerCollection: Collection = {

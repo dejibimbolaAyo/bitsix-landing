@@ -1,12 +1,12 @@
 import type { Collection } from "tinacms";
 
-import { ctoForHireHeroTemplate } from "@app/components/blocks/CtoForHireHero/Hero.template";
-import { ctoForHireWhyHireCtoTemplate } from "@app/components/blocks/CtoForHireWhyHireCto/WhyHireCto.template";
-import { ctoForHireHowBitSixCtoHelpsTemplate } from "@app/components/blocks/CtoForHireHowBitSixCtoHelps/HowBitSixCtoHelps.template";
-import { ctoForHireServicesOfferedTemplate } from "@app/components/blocks/CtoForHireServicesOffered/ServicesOffered.template";
-import { ctoForHireIdealClientsTemplate } from "@app/components/blocks/CtoForHireIdealClients/IdealClients.template";
 import { ctoForHireEngagementProcessTemplate } from "@app/components/blocks/CtoForHireEngagementProcess/EngagementProcess.template";
+import { ctoForHireHeroTemplate } from "@app/components/blocks/CtoForHireHero/Hero.template";
+import { ctoForHireHowBitSixCtoHelpsTemplate } from "@app/components/blocks/CtoForHireHowBitSixCtoHelps/HowBitSixCtoHelps.template";
+import { ctoForHireIdealClientsTemplate } from "@app/components/blocks/CtoForHireIdealClients/IdealClients.template";
+import { ctoForHireServicesOfferedTemplate } from "@app/components/blocks/CtoForHireServicesOffered/ServicesOffered.template";
 import { ctoForHireTestimonialsAndCaseStudiesTemplate } from "@app/components/blocks/CtoForHireTestimonialsAndCaseStudies/TestimonialsAndCaseStudies.template";
+import { ctoForHireWhyHireCtoTemplate } from "@app/components/blocks/CtoForHireWhyHireCto/WhyHireCto.template";
 
 export const ctoForHirePageBlocksCollection: Collection = {
     label: "CtoForHire",

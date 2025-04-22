@@ -1,6 +1,7 @@
-import React from "react";
 import { Link } from "@remix-run/react";
+import React from "react";
 import { tinaField } from "tinacms/dist/react";
+
 import { HomeBlocksInnovation } from "@tina/__generated__/types";
 interface InnovationProps {
   data: HomeBlocksInnovation;

@@ -1,8 +1,9 @@
-import { MetaFunction, useLoaderData } from "@remix-run/react";
 import { json } from "@remix-run/node";
-import { client } from "@tina/__generated__/client";
+import { MetaFunction, useLoaderData } from "@remix-run/react";
 import { useTina } from "tinacms/dist/react";
+
 import { BlogListPage } from "./page";
+import { client } from "@tina/__generated__/client";
 import {
   BlogPageQuery,
   BlogPostConnectionQuery,

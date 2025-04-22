@@ -1,9 +1,9 @@
 import type { Collection } from "tinacms";
 
+import { productDevelopmentBuildingWithUsTemplate } from "@app/components/blocks/ProductDevelopmentBuildingWithUs/BuildingWithUs.template";
 import { productDevelopmentHeroTemplate } from "@app/components/blocks/ProductDevelopmentHero/Hero.template";
 import { productDevelopmentProductShowcaseTemplate } from "@app/components/blocks/ProductDevelopmentProductShowcase/ProductShowcase.template";
 import { productDevelopmentTestimonialsTemplate } from "@app/components/blocks/ProductDevelopmentTestimonials/Testimonials.template";
-import { productDevelopmentBuildingWithUsTemplate } from "@app/components/blocks/ProductDevelopmentBuildingWithUs/BuildingWithUs.template";
 
 export const productDevelopmentPageBlocksCollection: Collection = {
     label: "ProductDevelopment",

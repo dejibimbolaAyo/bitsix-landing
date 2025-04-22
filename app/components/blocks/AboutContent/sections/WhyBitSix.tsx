@@ -1,6 +1,7 @@
+import { Lightbulb, Wrench, Rocket } from "lucide-react";
 import React from "react";
 import { tinaField } from "tinacms/dist/react";
-import { Lightbulb, Wrench, Rocket } from "lucide-react";
+
 import type { AboutBlocksAboutContent } from "@tina/__generated__/types";
 
 interface WhyBitSixProps {

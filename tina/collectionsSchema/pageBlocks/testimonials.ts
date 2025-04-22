@@ -1,7 +1,7 @@
 import type { Collection } from "tinacms";
 
-import { testimonialsHeroTemplate } from "@app/components/blocks/TestimonialsHero/Hero.template";
 import { testimonialsFeaturedTestimonialsTemplate } from "@app/components/blocks/TestimonialsFeaturedTestimonials/FeaturedTestimonials.template";
+import { testimonialsHeroTemplate } from "@app/components/blocks/TestimonialsHero/Hero.template";
 import { testimonialsTestimonialsListTemplate } from "@app/components/blocks/TestimonialsTestimonialsList/TestimonialsList.template";
 
 export const testimonialsPageBlocksCollection: Collection = {

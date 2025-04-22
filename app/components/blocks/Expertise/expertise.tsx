@@ -1,11 +1,12 @@
-import { Carousel } from "@app/components/ui/Carousel/Carousel";
 import { Link } from "@remix-run/react";
+import React from "react";
+import { tinaField } from "tinacms/dist/react";
+
+import { Carousel } from "@app/components/ui/Carousel/Carousel";
 import {
   HomeBlocksExpertise,
   HomeBlocksExpertiseSubcopy,
 } from "@tina/__generated__/types";
-import React from "react";
-import { tinaField } from "tinacms/dist/react";
 
 interface ExpertiseProps {
   data: HomeBlocksExpertise;

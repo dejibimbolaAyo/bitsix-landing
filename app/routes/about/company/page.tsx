@@ -1,9 +1,10 @@
 import React from "react";
-import type { AboutQuery } from "tina/__generated__/types";
 
-import AboutHero from "@app/components/blocks/AboutHero/aboutHero";
+
 import AboutContent from "@app/components/blocks/AboutContent/aboutContent";
+import AboutHero from "@app/components/blocks/AboutHero/aboutHero";
 import Team from "@app/components/blocks/Team/Team";
+import type { AboutQuery } from "tina/__generated__/types";
 
 interface PageProps {
   data: AboutQuery;

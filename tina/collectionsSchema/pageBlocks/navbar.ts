@@ -1,4 +1,5 @@
 import type { Collection } from "tinacms";
+
 import { navbarTemplate } from "@app/components/blocks/Navbar/navbar.template";
 
 export const navbarCollection: Collection = {

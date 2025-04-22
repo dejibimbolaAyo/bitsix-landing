@@ -1,14 +1,14 @@
-import React from "react";
 import { Link } from "@remix-run/react";
+import React from "react";
+import { tinaField } from "tinacms/dist/react";
+
+import { getLastUpdateTime } from "../../../util/date";
+import BlogHero from "@app/components/blocks/BlogHero/blogHero";
+import Newsletter from "@app/components/blocks/Newsletter/newsletter";
 import type {
   BlogPageQuery,
   BlogPostConnectionQuery,
 } from "@tina/__generated__/types";
-import { tinaField } from "tinacms/dist/react";
-import { getLastUpdateTime } from "../../../util/date";
-
-import BlogHero from "@app/components/blocks/BlogHero/blogHero";
-import Newsletter from "@app/components/blocks/Newsletter/newsletter";
 
 interface PageProps {
   data: {
