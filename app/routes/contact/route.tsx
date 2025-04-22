@@ -45,6 +45,7 @@ export const action = async ({ request }: ActionFunctionArgs) => {
 
     return { success: true };
   } catch (error) {
+    console.error("Error submitting form:", error);
     return { success: false, error: "Failed to submit form" };
   }
 };
