@@ -1,6 +1,7 @@
 import { ActionFunctionArgs, json } from "@remix-run/node";
 import { MetaFunction, useLoaderData } from "@remix-run/react";
 import { useTina } from "tinacms/dist/react";
+import { z } from "zod";
 
 import { ContactPage } from "./page";
 import { client } from "@tina/__generated__/client";
@@ -13,12 +14,40 @@ export const meta: MetaFunction = () => {
   ];
 };
 
+// Define the form schema using Zod
+const formSchema = z.object({
+  timestamp: z.string(),
+  fullName: z.string().min(1, "Full name is required"),
+  email: z.string().email("Please enter a valid email address"),
+  phone: z
+    .string()
+    .regex(/^\+?[\d\s-()]+$/, "Please enter a valid phone number")
+    .optional(),
+  company: z.string().optional(),
+  projectType: z.string().min(1, "Project type is required"),
+  help: z.string().min(1, "Project description is required"),
+  budget: z.string().optional(),
+  contactMethod: z.string().min(1, "Contact method is required"),
+});
+
 export const action = async ({ request }: ActionFunctionArgs) => {
   const env = process.env;
   const googleSheetsUrl = env.GOOGLE_SHEETS_WEBAPP_URL;
 
+  if (!googleSheetsUrl) {
+    console.error("Google Sheets URL is not configured");
+    return json(
+      {
+        success: false,
+        error:
+          "Form submission is currently unavailable. Please try again later.",
+      },
+      { status: 500 }
+    );
+  }
+
   const formData = await request.formData();
-  const data = {
+  const rawData = {
     timestamp: new Date().toISOString(),
     fullName: formData.get("fullName"),
     email: formData.get("email"),
@@ -30,8 +59,24 @@ export const action = async ({ request }: ActionFunctionArgs) => {
     contactMethod: formData.get("contactMethod"),
   };
 
+  // Validate form data using Zod
+  const validationResult = formSchema.safeParse(rawData);
+
+  if (!validationResult.success) {
+    return json(
+      {
+        success: false,
+        error: "Please correct the following errors:",
+        validationErrors: validationResult.error.format(),
+      },
+      { status: 400 }
+    );
+  }
+
+  const data = validationResult.data;
+
   try {
-    const response = await fetch(googleSheetsUrl ?? "", {
+    const response = await fetch(googleSheetsUrl, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -40,19 +85,29 @@ export const action = async ({ request }: ActionFunctionArgs) => {
     });
 
     if (!response.ok) {
-      throw new Error("Failed to submit form");
+      throw new Error(`HTTP error! status: ${response.status}`);
     }
 
-    return { success: true };
+    return json({ success: true });
   } catch (error) {
     console.error("Error submitting form:", error);
-    return { success: false, error: "Failed to submit form" };
+    return json(
+      {
+        success: false,
+        error: "Failed to submit form. Please try again later.",
+      },
+      { status: 500 }
+    );
   }
 };
 
 export const loader = async () => {
-  // Get the env variables
   const env = process.env;
+  const googleSheetsUrl = env.GOOGLE_SHEETS_WEBAPP_URL;
+
+  if (!googleSheetsUrl) {
+    console.error("Google Sheets URL is not configured");
+  }
 
   try {
     const pageQuery = await client.queries.contact({
@@ -65,7 +120,7 @@ export const loader = async () => {
 
     return json({
       query: pageQuery,
-      sheetsUrl: env.GOOGLE_SHEETS_WEBAPP_URL,
+      sheetsUrl: googleSheetsUrl,
     });
   } catch (error) {
     console.error("Error loading data:", error);

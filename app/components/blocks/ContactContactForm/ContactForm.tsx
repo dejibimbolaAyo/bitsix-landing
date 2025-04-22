@@ -2,12 +2,84 @@ import { Form, useActionData, useNavigation } from "@remix-run/react";
 import React, { useEffect } from "react";
 import toast from "react-hot-toast";
 
+import ServiceCard from "./ServiceCard";
 import type { ContactBlocksContactContactForm } from "@tina/__generated__/types";
 
 type ActionData = {
   success: boolean;
   error?: string;
 };
+
+const serviceCards = [
+  {
+    href: "/services/digital-transformation",
+    iconColor: "text-blue-600",
+    bgColor: "bg-blue-100",
+    title: "Digital Transformation",
+    description: "End-to-end digital media & commerce solutions",
+    icon: (
+      <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={2}
+          d="M13 10V3L4 14h7v7l9-11h-7z"
+        />
+      </svg>
+    ),
+  },
+  {
+    href: "/services/product-development",
+    iconColor: "text-purple-600",
+    bgColor: "bg-purple-100",
+    title: "Product Development",
+    description: "Custom software and application development",
+    icon: (
+      <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={2}
+          d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+        />
+      </svg>
+    ),
+  },
+  {
+    href: "/services/cto-for-hire",
+    iconColor: "text-green-600",
+    bgColor: "bg-green-100",
+    title: "CTO for Hire",
+    description: "Strategic technology leadership on demand",
+    icon: (
+      <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={2}
+          d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
+        />
+      </svg>
+    ),
+  },
+  {
+    href: "/services/engineers-for-hire",
+    iconColor: "text-yellow-600",
+    bgColor: "bg-yellow-100",
+    title: "Engineers for Hire",
+    description: "Expert engineering talent for your projects",
+    icon: (
+      <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={2}
+          d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
+        />
+      </svg>
+    ),
+  },
+];
 
 const ContactContactForm: React.FC<{
   data: ContactBlocksContactContactForm;
@@ -109,129 +181,9 @@ const ContactContactForm: React.FC<{
 
               {/* Service Cards */}
               <div className="grid grid-cols-1 gap-4">
-                <a
-                  href="/services/digital-transformation"
-                  className="group p-4 rounded-lg border border-gray-200 hover:border-blue-500 transition-colors duration-300"
-                >
-                  <div className="flex items-center space-x-3">
-                    <div className="flex-shrink-0 w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center">
-                      <svg
-                        className="w-5 h-5 text-blue-600"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M13 10V3L4 14h7v7l9-11h-7z"
-                        />
-                      </svg>
-                    </div>
-                    <div>
-                      <h4 className="text-lg font-medium text-gray-900 group-hover:text-blue-600 transition-colors duration-300">
-                        Digital Transformation
-                      </h4>
-                      <p className="text-sm text-gray-500">
-                        End-to-end digital media & commerce solutions
-                      </p>
-                    </div>
-                  </div>
-                </a>
-
-                <a
-                  href="/services/product-development"
-                  className="group p-4 rounded-lg border border-gray-200 hover:border-blue-500 transition-colors duration-300"
-                >
-                  <div className="flex items-center space-x-3">
-                    <div className="flex-shrink-0 w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center">
-                      <svg
-                        className="w-5 h-5 text-purple-600"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                        />
-                      </svg>
-                    </div>
-                    <div>
-                      <h4 className="text-lg font-medium text-gray-900 group-hover:text-purple-600 transition-colors duration-300">
-                        Product Development
-                      </h4>
-                      <p className="text-sm text-gray-500">
-                        Custom software and application development
-                      </p>
-                    </div>
-                  </div>
-                </a>
-
-                <a
-                  href="/services/cto-for-hire"
-                  className="group p-4 rounded-lg border border-gray-200 hover:border-blue-500 transition-colors duration-300"
-                >
-                  <div className="flex items-center space-x-3">
-                    <div className="flex-shrink-0 w-10 h-10 rounded-full bg-green-100 flex items-center justify-center">
-                      <svg
-                        className="w-5 h-5 text-green-600"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
-                        />
-                      </svg>
-                    </div>
-                    <div>
-                      <h4 className="text-lg font-medium text-gray-900 group-hover:text-green-600 transition-colors duration-300">
-                        CTO for Hire
-                      </h4>
-                      <p className="text-sm text-gray-500">
-                        Strategic technology leadership on demand
-                      </p>
-                    </div>
-                  </div>
-                </a>
-
-                <a
-                  href="/services/engineers-for-hire"
-                  className="group p-4 rounded-lg border border-gray-200 hover:border-blue-500 transition-colors duration-300"
-                >
-                  <div className="flex items-center space-x-3">
-                    <div className="flex-shrink-0 w-10 h-10 rounded-full bg-yellow-100 flex items-center justify-center">
-                      <svg
-                        className="w-5 h-5 text-yellow-600"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
-                        />
-                      </svg>
-                    </div>
-                    <div>
-                      <h4 className="text-lg font-medium text-gray-900 group-hover:text-yellow-600 transition-colors duration-300">
-                        Engineers for Hire
-                      </h4>
-                      <p className="text-sm text-gray-500">
-                        Expert engineering talent for your projects
-                      </p>
-                    </div>
-                  </div>
-                </a>
+                {serviceCards.map((card, index) => (
+                  <ServiceCard key={index} {...card} />
+                ))}
               </div>
             </div>
           </div>
