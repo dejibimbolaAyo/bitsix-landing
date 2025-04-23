@@ -8,6 +8,7 @@ import {
   ScrollRestoration,
   useLoaderData,
 } from "@remix-run/react";
+import { Toaster } from "react-hot-toast";
 import { useTina } from "tinacms/dist/react";
 
 import styles from "./style.css?url";
@@ -77,6 +78,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
       </head>
       <body>
         {children}
+        <Toaster position="top-right" />
         <ScrollRestoration />
         <Scripts />
       </body>
