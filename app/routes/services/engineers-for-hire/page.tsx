@@ -8,7 +8,11 @@ import EngineersForHireIdealClients from "@app/components/blocks/EngineersForHir
 import EngineersForHireServicesOffered from "@app/components/blocks/EngineersForHireServicesOffered/ServicesOffered";
 import EngineersForHireTestimonialsAndCaseStudies from "@app/components/blocks/EngineersForHireTestimonialsAndCaseStudies/TestimonialsAndCaseStudies";
 import EngineersForHireWhyHireEngineers from "@app/components/blocks/EngineersForHireWhyHireEngineers/WhyHireEngineers";
-import type { EngineersForHireQuery } from "@tina/__generated__/types";
+import type {
+  EngineersForHireQuery,
+  EngineersForHireBlocksEngineersForHireWhyHireEngineers,
+  EngineersForHireBlocksEngineersForHireTestimonialsAndCaseStudies,
+} from "@tina/__generated__/types";
 
 interface PageProps {
   data: EngineersForHireQuery;
@@ -25,7 +29,7 @@ export const EngineersForHirePage: React.FC<PageProps> = ({ data }) => {
     (block) =>
       block?.__typename ===
       "EngineersForHireBlocksEngineersForHireWhyHireEngineers"
-  );
+  ) as EngineersForHireBlocksEngineersForHireWhyHireEngineers | undefined;
   const HowBitSixEngineersHelps = page.blocks?.find(
     (block) =>
       block?.__typename ===
@@ -49,7 +53,7 @@ export const EngineersForHirePage: React.FC<PageProps> = ({ data }) => {
     (block) =>
       block?.__typename ===
       "EngineersForHireBlocksEngineersForHireTestimonialsAndCaseStudies"
-  );
+  ) as EngineersForHireBlocksEngineersForHireTestimonialsAndCaseStudies | undefined;
 
   return (
     <div>

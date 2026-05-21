@@ -4,7 +4,13 @@ import ProductDevelopmentBuildingWithUs from "@app/components/blocks/ProductDeve
 import ProductDevelopmentHero from "@app/components/blocks/ProductDevelopmentHero/Hero";
 import ProductDevelopmentProductShowcase from "@app/components/blocks/ProductDevelopmentProductShowcase/ProductShowcase";
 import ProductDevelopmentTestimonials from "@app/components/blocks/ProductDevelopmentTestimonials/Testimonials";
-import type { ProductDevelopmentQuery } from "@tina/__generated__/types";
+import type {
+  ProductDevelopmentQuery,
+  ProductDevelopmentBlocksProductDevelopmentHero,
+  ProductDevelopmentBlocksProductDevelopmentProductShowcase,
+  ProductDevelopmentBlocksProductDevelopmentTestimonials,
+  ProductDevelopmentBlocksProductDevelopmentBuildingWithUs,
+} from "@tina/__generated__/types";
 
 interface PageProps {
   data: ProductDevelopmentQuery;
@@ -15,16 +21,16 @@ export const ProductDevelopmentPage: React.FC<PageProps> = ({ data }) => {
 
   const Hero = page.blocks?.find(
     (block) => block?.__typename === "ProductDevelopmentBlocksProductDevelopmentHero"
-  );
+  ) as ProductDevelopmentBlocksProductDevelopmentHero | undefined;
   const ProductShowcase = page.blocks?.find(
     (block) => block?.__typename === "ProductDevelopmentBlocksProductDevelopmentProductShowcase"
-  );
+  ) as ProductDevelopmentBlocksProductDevelopmentProductShowcase | undefined;
   const Testimonials = page.blocks?.find(
     (block) => block?.__typename === "ProductDevelopmentBlocksProductDevelopmentTestimonials"
-  );
+  ) as ProductDevelopmentBlocksProductDevelopmentTestimonials | undefined;
   const BuildingWithUs = page.blocks?.find(
     (block) => block?.__typename === "ProductDevelopmentBlocksProductDevelopmentBuildingWithUs"
-  );
+  ) as ProductDevelopmentBlocksProductDevelopmentBuildingWithUs | undefined;
 
   return (
     <div>

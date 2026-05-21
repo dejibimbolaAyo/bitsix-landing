@@ -1,5 +1,5 @@
-import { json, type LoaderFunction } from "@remix-run/node";
-import { LinksFunction } from "@remix-run/node";
+import { json, type LoaderFunction } from "@remix-run/cloudflare";
+import { LinksFunction } from "@remix-run/cloudflare";
 import {
   Links,
   Meta,
@@ -31,7 +31,7 @@ export const links: LinksFunction = () => [
   },
 ];
 
-export const loader: LoaderFunction = async () => {
+export const loader = async () => {
   try {
     const navbarResponse = await client.queries.navbar({
       relativePath: "navbar.mdx",

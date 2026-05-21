@@ -1,2 +1,2 @@
 export { default as Team } from "./Team";
-export { teamBlockTemplate } from "./team.template"; 
+export { teamTemplate } from "./team.template"; 

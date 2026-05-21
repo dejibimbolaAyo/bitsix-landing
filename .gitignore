@@ -4,8 +4,10 @@ node_modules
 /public/build
 /build
 .env
-
-# Local Netlify folder
 .netlify
+/.netlify
+
+# Local Wrangler folder
+.wrangler
 .DS_Store
 .qodo
