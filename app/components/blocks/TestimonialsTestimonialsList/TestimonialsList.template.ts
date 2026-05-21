@@ -7,32 +7,62 @@ export const testimonialsTestimonialsListTemplate: Template = {
     {
       type: "string",
       name: "testimonialsTestimonialsListTitle",
-      label: "Title",
+      label: "Section Title",
     },
     {
       type: "string",
       name: "testimonialsTestimonialsListSubtitle",
-      label: "Subtitle",
+      label: "Section Subtitle",
     },
     {
-      type: "rich-text",
-      name: "testimonialsTestimonialsListContent",
-      label: "Content",
-    },
-    {
-      type: "image",
-      name: "testimonialsTestimonialsListImage",
-      label: "Image",
-    },
-    {
-      type: "string",
-      name: "testimonialsTestimonialsListCtaText",
-      label: "Call to Action Text",
-    },
-    {
-      type: "string",
-      name: "testimonialsTestimonialsListCtaLink",
-      label: "Call to Action Link",
+      type: "object",
+      name: "items",
+      label: "Testimonial Items",
+      list: true,
+      ui: {
+        itemProps: (item) => ({
+          label: `${item?.authorName || "Testimonial"} - ${item?.companyType || ""}`,
+        }),
+      },
+      fields: [
+        {
+          type: "string",
+          name: "quote",
+          label: "Quote Text",
+          ui: {
+            component: "textarea",
+          },
+          required: true,
+        },
+        {
+          type: "string",
+          name: "authorName",
+          label: "Author Name",
+          required: true,
+        },
+        {
+          type: "string",
+          name: "authorRole",
+          label: "Author Role",
+          required: true,
+        },
+        {
+          type: "string",
+          name: "companyType",
+          label: "Company Type/Profile",
+          required: true,
+        },
+        {
+          type: "number",
+          name: "rating",
+          label: "Rating (1 to 5)",
+        },
+        {
+          type: "image",
+          name: "avatar",
+          label: "Avatar Image",
+        },
+      ],
     },
   ],
 };

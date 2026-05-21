@@ -15,7 +15,7 @@ export const caseStudiesPageBlocksCollection: Collection = {
     ui: {
         router: ({ document }) => {
             if (document._sys.filename === 'case-studies') {
-                return `/case-studies`
+                return `/resources/case-studies`
             }
             return `/${document._sys.filename}`
         },
