@@ -2,12 +2,15 @@ import React from "react";
 
 import CtoForHireEngagementProcess from "@app/components/blocks/CtoForHireEngagementProcess/EngagementProcess";
 import CtoForHireHero from "@app/components/blocks/CtoForHireHero/Hero";
-import CtoForHireHowBitSixCtoHelps from "@app/components/blocks/CtoForHireHowBitSixCtoHelps/HowBitSixCtoHelps";
-import CtoForHireIdealClients from "@app/components/blocks/CtoForHireIdealClients/IdealClients";
-import CtoForHireServicesOffered from "@app/components/blocks/CtoForHireServicesOffered/ServicesOffered";
 import CtoForHireTestimonialsAndCaseStudies from "@app/components/blocks/CtoForHireTestimonialsAndCaseStudies/TestimonialsAndCaseStudies";
 import CtoForHireWhyHireCto from "@app/components/blocks/CtoForHireWhyHireCto/WhyHireCto";
-import type { CtoForHireQuery } from "@tina/__generated__/types";
+import type {
+  CtoForHireQuery,
+  CtoForHireBlocksCtoForHireHero,
+  CtoForHireBlocksCtoForHireWhyHireCto,
+  CtoForHireBlocksCtoForHireTestimonialsAndCaseStudies,
+  CtoForHireBlocksCtoForHireEngagementProcess,
+} from "@tina/__generated__/types";
 
 interface PageProps {
   data: CtoForHireQuery;
@@ -18,46 +21,31 @@ export const CtoForHirePage: React.FC<PageProps> = ({ data }) => {
 
   const Hero = page.blocks?.find(
     (block) => block?.__typename === "CtoForHireBlocksCtoForHireHero"
-  );
+  ) as CtoForHireBlocksCtoForHireHero | undefined;
   const WhyHireCto = page.blocks?.find(
     (block) => block?.__typename === "CtoForHireBlocksCtoForHireWhyHireCto"
-  );
-  const HowBitSixCtoHelps = page.blocks?.find(
-    (block) =>
-      block?.__typename === "CtoForHireBlocksCtoForHireHowBitSixCtoHelps"
-  );
-  const ServicesOffered = page.blocks?.find(
-    (block) => block?.__typename === "CtoForHireBlocksCtoForHireServicesOffered"
-  );
-  const IdealClients = page.blocks?.find(
-    (block) => block?.__typename === "CtoForHireBlocksCtoForHireIdealClients"
-  );
-  const EngagementProcess = page.blocks?.find(
-    (block) =>
-      block?.__typename === "CtoForHireBlocksCtoForHireEngagementProcess"
-  );
+  ) as CtoForHireBlocksCtoForHireWhyHireCto | undefined;
   const TestimonialsAndCaseStudies = page.blocks?.find(
     (block) =>
       block?.__typename ===
       "CtoForHireBlocksCtoForHireTestimonialsAndCaseStudies"
-  );
+  ) as CtoForHireBlocksCtoForHireTestimonialsAndCaseStudies | undefined;
+  const EngagementProcess = page.blocks?.find(
+    (block) =>
+      block?.__typename === "CtoForHireBlocksCtoForHireEngagementProcess"
+  ) as CtoForHireBlocksCtoForHireEngagementProcess | undefined;
 
   return (
     <div>
       {Hero && <CtoForHireHero data={Hero} />}
       {WhyHireCto && <CtoForHireWhyHireCto data={WhyHireCto} />}
-      {HowBitSixCtoHelps && (
-        <CtoForHireHowBitSixCtoHelps data={HowBitSixCtoHelps} />
-      )}
-      {ServicesOffered && <CtoForHireServicesOffered data={ServicesOffered} />}
-      {IdealClients && <CtoForHireIdealClients data={IdealClients} />}
-      {EngagementProcess && (
-        <CtoForHireEngagementProcess data={EngagementProcess} />
-      )}
       {TestimonialsAndCaseStudies && (
         <CtoForHireTestimonialsAndCaseStudies
           data={TestimonialsAndCaseStudies}
         />
+      )}
+      {EngagementProcess && (
+        <CtoForHireEngagementProcess data={EngagementProcess} />
       )}
     </div>
   );
