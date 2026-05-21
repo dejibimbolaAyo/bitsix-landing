@@ -60,7 +60,7 @@ const Testimonials: React.FC<TestimonialsProps> = ({ data }) => {
 
             <div className="md:col-span-2 flex justify-start">
               <a
-                href="/testimonials"
+                href="/resources/testimonials"
                 className="inline-flex items-center text-sm font-medium text-pink-600 hover:text-pink-700 focus:outline-none"
               >
                 <span className="mr-2">→</span>

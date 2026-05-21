@@ -11,3 +11,7 @@ node_modules
 .wrangler
 .DS_Store
 .qodo
+
+# Local agent skills (not part of the app)
+.agents/
+skills-lock.json
