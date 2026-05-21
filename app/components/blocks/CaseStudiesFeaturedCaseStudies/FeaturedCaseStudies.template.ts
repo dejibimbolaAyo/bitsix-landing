@@ -7,32 +7,65 @@ export const caseStudiesFeaturedCaseStudiesTemplate: Template = {
     {
       type: "string",
       name: "caseStudiesFeaturedCaseStudiesTitle",
-      label: "Title",
+      label: "Section Title",
     },
     {
       type: "string",
       name: "caseStudiesFeaturedCaseStudiesSubtitle",
-      label: "Subtitle",
+      label: "Section Subtitle",
     },
     {
-      type: "rich-text",
-      name: "caseStudiesFeaturedCaseStudiesContent",
-      label: "Content",
+      type: "string",
+      name: "title",
+      label: "Case Study Title",
+    },
+    {
+      type: "string",
+      name: "headline",
+      label: "Headline",
+    },
+    {
+      type: "string",
+      name: "category",
+      label: "Category",
+    },
+    {
+      type: "string",
+      name: "clientProfile",
+      label: "Client Profile (Anonymized)",
+    },
+    {
+      type: "string",
+      name: "businessProblem",
+      label: "Business Problem",
+      ui: {
+        component: "textarea",
+      },
+    },
+    {
+      type: "string",
+      name: "ourRole",
+      label: "Our Role",
+      ui: {
+        component: "textarea",
+      },
+    },
+    {
+      type: "string",
+      name: "businessValueDelivered",
+      label: "Business Value Delivered",
+      list: true,
+    },
+    {
+      type: "string",
+      name: "techStack",
+      label: "Tech Stack Tags",
+      list: true,
     },
     {
       type: "image",
-      name: "caseStudiesFeaturedCaseStudiesImage",
-      label: "Image",
-    },
-    {
-      type: "string",
-      name: "caseStudiesFeaturedCaseStudiesCtaText",
-      label: "Call to Action Text",
-    },
-    {
-      type: "string",
-      name: "caseStudiesFeaturedCaseStudiesCtaLink",
-      label: "Call to Action Link",
+      name: "image",
+      label: "Featured Image",
     },
   ],
 };

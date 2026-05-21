@@ -7,32 +7,45 @@ export const testimonialsFeaturedTestimonialsTemplate: Template = {
     {
       type: "string",
       name: "testimonialsFeaturedTestimonialsTitle",
-      label: "Title",
+      label: "Section Title",
     },
     {
       type: "string",
       name: "testimonialsFeaturedTestimonialsSubtitle",
-      label: "Subtitle",
+      label: "Section Subtitle",
     },
     {
-      type: "rich-text",
-      name: "testimonialsFeaturedTestimonialsContent",
-      label: "Content",
+      type: "string",
+      name: "quote",
+      label: "Quote Text",
+      ui: {
+        component: "textarea",
+      },
+    },
+    {
+      type: "string",
+      name: "authorName",
+      label: "Author Name (Redacted/Initials or Role)",
+    },
+    {
+      type: "string",
+      name: "authorRole",
+      label: "Author Role (e.g. CTO & Co-founder)",
+    },
+    {
+      type: "string",
+      name: "companyType",
+      label: "Company Profile/Type (Redacted, e.g. SaaS Logistics Platform)",
+    },
+    {
+      type: "number",
+      name: "rating",
+      label: "Rating (1 to 5)",
     },
     {
       type: "image",
-      name: "testimonialsFeaturedTestimonialsImage",
-      label: "Image",
-    },
-    {
-      type: "string",
-      name: "testimonialsFeaturedTestimonialsCtaText",
-      label: "Call to Action Text",
-    },
-    {
-      type: "string",
-      name: "testimonialsFeaturedTestimonialsCtaLink",
-      label: "Call to Action Link",
+      name: "avatar",
+      label: "Author Avatar Placeholder",
     },
   ],
 };
