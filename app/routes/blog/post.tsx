@@ -1,4 +1,4 @@
-import { json, LoaderFunction } from "@remix-run/node";
+import { json, type LoaderFunctionArgs } from "@remix-run/cloudflare";
 import { useLoaderData } from "@remix-run/react";
 import { useTina, tinaField } from "tinacms/dist/react";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
@@ -7,7 +7,7 @@ import { components } from "@app/components/ui/BlogPost/custom-components";
 import { client } from "@tina/__generated__/client";
 import type { BlogPostQuery } from "@tina/__generated__/types";
 
-export const loader: LoaderFunction = async ({ params }) => {
+export const loader = async ({ params }: LoaderFunctionArgs) => {
   try {
     const postQueryResponse = await client.queries.blogPost({
       relativePath: `${params.slug}.mdx`,

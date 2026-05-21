@@ -4,8 +4,14 @@ node_modules
 /public/build
 /build
 .env
-
-# Local Netlify folder
 .netlify
+/.netlify
+
+# Local Wrangler folder
+.wrangler
 .DS_Store
 .qodo
+
+# Local agent skills (not part of the app)
+.agents/
+skills-lock.json

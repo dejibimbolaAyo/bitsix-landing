@@ -8,19 +8,21 @@
     "dev": "node scripts/dev.js",
     "lint": "eslint --ignore-path .gitignore --cache --cache-location ./node_modules/.cache/eslint .",
     "lint:fix": "eslint --ignore-path .gitignore --cache --cache-location ./node_modules/.cache/eslint . --fix",
-    "start": "netlify serve",
+    "start": "wrangler pages dev ./build/client",
+    "preview": "npm run build && wrangler pages dev ./build/client",
+    "deploy": "npm run build && wrangler pages deploy ./build/client",
+    "deploy:preview": "npm run build && wrangler pages deploy ./build/client --branch=preview",
     "typecheck": "tsc",
+    "typegen": "wrangler types",
     "generate-page": "npx ts-node --esm scripts/generate-page.ts",
     "tools": "npx ts-node --esm scripts/index.ts"
   },
   "dependencies": {
     "@lottiefiles/dotlottie-react": "^0.13.0",
-    "@netlify/functions": "^2.6.0",
-    "@netlify/remix-adapter": "^2.3.1",
     "@radix-ui/react-slot": "^1.1.2",
-    "@remix-run/node": "^2.16.4",
+    "@remix-run/cloudflare": "^2.16.4",
+    "@remix-run/cloudflare-pages": "^2.16.4",
     "@remix-run/react": "^2.16.4",
-    "@remix-run/serve": "^2.16.4",
     "@tailwindcss/vite": "^4.0.9",
     "chalk": "^5.4.1",
     "class-variance-authority": "^0.7.1",
@@ -35,6 +37,7 @@
     "zod": "^3.24.3"
   },
   "devDependencies": {
+    "@cloudflare/workers-types": "^4.20240512.0",
     "@remix-run/dev": "^2.16.4",
     "@tailwindcss/typography": "^0.5.16",
     "@tinacms/cli": "^1.9.2",
@@ -57,7 +60,8 @@
     "ts-node": "^10.9.2",
     "typescript": "^5.1.6",
     "vite": "^5.4.8",
-    "vite-tsconfig-paths": "^4.2.1"
+    "vite-tsconfig-paths": "^4.2.1",
+    "wrangler": "^3.57.1"
   },
   "engines": {
     "node": ">=18.0.0"

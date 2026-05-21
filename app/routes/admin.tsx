@@ -1,4 +1,4 @@
-import { redirect } from "@remix-run/node";
+import { redirect } from "@remix-run/cloudflare";
 
 export const loader = async () => {
   //? There has to be a better way to do this

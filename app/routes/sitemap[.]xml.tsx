@@ -1,9 +1,9 @@
-import { LoaderFunction } from "@remix-run/node";
+import { LoaderFunction } from "@remix-run/cloudflare";
 
 export const loader: LoaderFunction = async () => {
   const baseUrl = "https://bitsix.com"; // Replace with your actual domain
 
-  const routes = ["", "/about", "/about/company"];
+  const routes = ["", "/about/company", "/blog", "/contact", "/resources/case-studies", "/resources/testimonials", "/services/digital-transformation", "/services/product-development", "/services/cto-for-hire", "/services/engineers-for-hire"];
 
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">

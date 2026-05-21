@@ -1,40 +1,83 @@
 import React from "react";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
+import { tinaField } from "tinacms/dist/react";
+import { Link } from "@remix-run/react";
+import { CtoForHireBlocksCtoForHireEngagementProcess } from "@tina/__generated__/types";
 
 interface CtoForHireEngagementProcessProps {
-  data: any;
+  data: CtoForHireBlocksCtoForHireEngagementProcess;
 }
 
-const CtoForHireEngagementProcess: React.FC<CtoForHireEngagementProcessProps> = ({ data }) => {
+const CtoForHireEngagementProcess: React.FC<CtoForHireEngagementProcessProps> = ({
+  data,
+}) => {
   return (
-    <section className="px-8 py-12 lg:py-16">
-      <div className="container mx-auto">
-        <h2 className="text-3xl md:text-4xl font-bold mb-4">{data.ctoForHireEngagementProcessTitle}</h2>
-        {data.ctoForHireEngagementProcessSubtitle && (
-          <h3 className="text-xl md:text-2xl mb-6">{data.ctoForHireEngagementProcessSubtitle}</h3>
-        )}
-        {data.ctoForHireEngagementProcessContent && (
-          <div className="prose max-w-none">
-            <TinaMarkdown content={data.ctoForHireEngagementProcessContent} />
+    <section className="py-16 lg:py-24 bg-slate-50">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="relative rounded-3xl overflow-hidden shadow-2xl bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-800 text-white py-12 px-8 md:p-16 lg:p-20">
+          <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-white/10 rounded-full blur-3xl -z-10 pointer-events-none"></div>
+          <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-blue-400/20 rounded-full blur-3xl -z-10 pointer-events-none"></div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
+            <div className="lg:col-span-7 flex flex-col items-start text-left">
+              <h2
+                data-tina-field={tinaField(data, "ctoForHireEngagementProcessTitle")}
+                className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight mb-4 text-white leading-tight"
+              >
+                {data.ctoForHireEngagementProcessTitle}
+              </h2>
+              {data.ctoForHireEngagementProcessSubtitle && (
+                <p
+                  data-tina-field={tinaField(
+                    data,
+                    "ctoForHireEngagementProcessSubtitle"
+                  )}
+                  className="text-lg sm:text-xl font-medium text-blue-100 mb-6"
+                >
+                  {data.ctoForHireEngagementProcessSubtitle}
+                </p>
+              )}
+              {data.ctoForHireEngagementProcessContent && (
+                <div
+                  data-tina-field={tinaField(
+                    data,
+                    "ctoForHireEngagementProcessContent"
+                  )}
+                  className="prose prose-invert max-w-none text-blue-50/90 mb-8 leading-relaxed"
+                >
+                  <TinaMarkdown content={data.ctoForHireEngagementProcessContent} />
+                </div>
+              )}
+              {data.ctoForHireEngagementProcessCtaText &&
+                data.ctoForHireEngagementProcessCtaLink && (
+                  <div>
+                    <Link
+                      to={data.ctoForHireEngagementProcessCtaLink}
+                      className="btn btn-white bg-white text-blue-700 hover:bg-blue-50 border-0 btn-lg shadow-xl hover:-translate-y-0.5 transform transition-all duration-200"
+                    >
+                      {data.ctoForHireEngagementProcessCtaText}
+                    </Link>
+                  </div>
+                )}
+            </div>
+
+            {data.ctoForHireEngagementProcessImage && (
+              <div className="lg:col-span-5 relative w-full flex justify-center">
+                <div className="relative w-full max-w-sm lg:max-w-none aspect-[4/3] rounded-2xl overflow-hidden shadow-lg border border-white/10">
+                  <img
+                    data-tina-field={tinaField(
+                      data,
+                      "ctoForHireEngagementProcessImage"
+                    )}
+                    src={data.ctoForHireEngagementProcessImage}
+                    alt={data.ctoForHireEngagementProcessTitle}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              </div>
+            )}
           </div>
-        )}
-        {data.ctoForHireEngagementProcessImage && (
-          <img 
-            src={data.ctoForHireEngagementProcessImage} 
-            alt={data.ctoForHireEngagementProcessTitle}
-            className="mt-6 w-full h-auto rounded-lg"
-          />
-        )}
-        {data.ctoForHireEngagementProcessCtaText && data.ctoForHireEngagementProcessCtaLink && (
-          <div className="mt-8">
-            <a 
-              href={data.ctoForHireEngagementProcessCtaLink}
-              className="px-6 py-3 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition"
-            >
-              {data.ctoForHireEngagementProcessCtaText}
-            </a>
-          </div>
-        )}
+        </div>
       </div>
     </section>
   );

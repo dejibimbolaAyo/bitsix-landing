@@ -79,9 +79,7 @@ const CaseStudies: React.FC<CaseStudiesProps> = ({ data }) => {
                   {/* Read more link */}
                   <div className="mt-auto">
                     <a
-                      href={`/case-studies/${study?.studyTitle
-                        ?.toLowerCase()
-                        .replace(/\s+/g, "-")}`}
+                      href="/resources/case-studies"
                       className="inline-flex items-center text-gray-600 hover:text-gray-900"
                     >
                       More <span className="ml-2">→</span>

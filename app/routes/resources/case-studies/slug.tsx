@@ -1,4 +1,4 @@
-    import { json } from "@remix-run/node";
+    import { json } from "@remix-run/cloudflare";
 import { MetaFunction, useLoaderData, useParams } from "@remix-run/react";
 
     export const meta: MetaFunction = () => {

@@ -8,6 +8,8 @@ import Newsletter from "@app/components/blocks/Newsletter/newsletter";
 import type {
   BlogPageQuery,
   BlogPostConnectionQuery,
+  BlogPageBlocksBlogList,
+  BlogPageBlocksNewsletter,
 } from "@tina/__generated__/types";
 
 interface PageProps {
@@ -26,11 +28,11 @@ export const BlogListPage: React.FC<PageProps> = ({ data }) => {
 
   const blogListBlock = data.page.blogPage.blocks?.find(
     (block) => block?.__typename === "BlogPageBlocksBlogList"
-  );
+  ) as BlogPageBlocksBlogList | undefined;
 
   const newsletterBlock = data.page.blogPage.blocks?.find(
     (block) => block?.__typename === "BlogPageBlocksNewsletter"
-  );
+  ) as BlogPageBlocksNewsletter | undefined;
 
   return (
     <div className="min-h-screen bg-base-100">

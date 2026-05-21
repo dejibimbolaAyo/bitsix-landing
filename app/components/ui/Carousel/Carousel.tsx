@@ -145,13 +145,17 @@ export const Carousel: React.FC<CarouselProps> = ({ slides }) => {
       onTouchEnd={handleTouchEnd}
     >
       <div className="relative w-full h-full">
-        {slides.map((slide, index) => (
-          <CarouselSlide
-            key={slide.image + index}
-            {...slide}
-            isActive={currentSlide === index}
-          />
-        ))}
+        {slides.map((slide, index) => {
+          if (!slide.image) return null;
+          return (
+            <CarouselSlide
+              key={slide.image + index}
+              image={slide.image}
+              alt={slide.alt}
+              isActive={currentSlide === index}
+            />
+          );
+        })}
       </div>
 
       {/* Fixed Navigation Buttons */}

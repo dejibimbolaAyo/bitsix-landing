@@ -1,4 +1,4 @@
-import { json } from "@remix-run/node";
+import { json } from "@remix-run/cloudflare";
 import { MetaFunction, useLoaderData } from "@remix-run/react";
 import { useTina } from "tinacms/dist/react";
 
@@ -52,7 +52,7 @@ export default function Blog() {
     page: blogPageQuery.data,
     posts: postsQuery.data,
     meta: {
-      lastUpdated: postsQuery.data.blogPostConnection.edges?.[0]?.node?.date,
+      lastUpdated: postsQuery.data.blogPostConnection.edges?.[0]?.node?.date || "",
     },
   };
 
