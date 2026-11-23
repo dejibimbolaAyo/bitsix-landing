@@ -22,6 +22,8 @@ Core Remix + TinaCMS application — routes, page components, shared UI, entry p
 - Fonts: Comfortaa and Playfair Display (loaded in root.tsx via Google Fonts preconnect)
 - Import groups (enforced by ESLint): builtin/external first, then internal/parent/sibling/index, separated by newline
 
+- The contact action reads `GOOGLE_SHEETS_WEBAPP_URL` from the Cloudflare Pages runtime. Keep the binding server-side. The contact page loads independently of the submission binding.
+
 ## Work Guidance
 
 - Adding a new page: create folder under `routes/`, add `route.tsx` and `page.tsx`, register route in `vite.config.ts`, add TinaCMS collection if needed, create block components if needed
