@@ -4,6 +4,7 @@ import { useTina } from "tinacms/dist/react";
 import { z } from "zod";
 
 import { ContactPage } from "./page";
+import { createZohoLead, zohoConfigSchema } from "./zoho.server";
 import { client } from "@tina/__generated__/client";
 import type { ContactQuery } from "@tina/__generated__/types";
 
@@ -16,38 +17,27 @@ export const meta: MetaFunction = () => {
 
 // Define the form schema using Zod
 const formSchema = z.object({
-  timestamp: z.string(),
-  fullName: z.string().min(1, "Full name is required"),
-  email: z.string().email("Please enter a valid email address"),
+  fullName: z.string().trim().min(1, "Full name is required").max(80),
+  email: z.string().trim().email("Please enter a valid email address").max(100),
   phone: z
     .string()
+    .trim()
+    .max(30)
     .regex(/^\+?[\d\s-()]+$/, "Please enter a valid phone number")
     .optional(),
-  company: z.string().optional(),
-  projectType: z.string().min(1, "Project type is required"),
-  help: z.string().min(1, "Project description is required"),
-  budget: z.string().optional(),
-  contactMethod: z.string().min(1, "Contact method is required"),
+  company: z.string().trim().max(200).optional(),
+  projectType: z.string().trim().min(1, "Project type is required").max(100),
+  help: z.string().trim().min(1, "Project description is required").max(1600),
+  budget: z.string().trim().max(100).optional(),
+  contactMethod: z.string().trim().min(1, "Contact method is required").max(100),
 });
 
 export const action = async ({ request, context }: ActionFunctionArgs) => {
-  const googleSheetsUrl = context.cloudflare.env.GOOGLE_SHEETS_WEBAPP_URL;
-
-  if (!googleSheetsUrl) {
-    console.error("Google Sheets URL is not configured");
-    return json(
-      {
-        success: false,
-        error:
-          "Form submission is currently unavailable. Please try again later.",
-      },
-      { status: 500 }
-    );
+  const formData = await request.formData().catch(() => null);
+  if (!formData) {
+    return json({ success: false, error: "Invalid form submission." }, { status: 400 });
   }
-
-  const formData = await request.formData();
   const rawData = {
-    timestamp: new Date().toISOString(),
     fullName: formData.get("fullName") || undefined,
     email: formData.get("email") || undefined,
     phone: formData.get("phone") || undefined,
@@ -72,20 +62,32 @@ export const action = async ({ request, context }: ActionFunctionArgs) => {
     );
   }
 
+  const config = zohoConfigSchema.safeParse(context.cloudflare.env);
+  if (!config.success) {
+    console.error("Zoho CRM bindings are missing or invalid");
+    return json(
+      { success: false, error: "Form submission is currently unavailable. Please try again later." },
+      { status: 503 }
+    );
+  }
+
   const data = validationResult.data;
 
   try {
-    const response = await fetch(googleSheetsUrl, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
+    await createZohoLead(config.data, {
+      Last_Name: data.fullName,
+      Email: data.email,
+      Phone: data.phone,
+      Company: data.company,
+      Description: [
+        "Source: BitSix website",
+        `Project type: ${data.projectType}`,
+        `Budget: ${data.budget || "Not provided"}`,
+        `Preferred contact method: ${data.contactMethod}`,
+        "",
+        data.help,
+      ].join("\n"),
     });
-
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
 
     return json({ success: true });
   } catch (error) {
