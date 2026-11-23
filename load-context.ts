@@ -1,7 +1,10 @@
 import { type PlatformProxy } from "wrangler";
 
 interface Env {
-  GOOGLE_SHEETS_WEBAPP_URL?: string;
+  ZOHO_ACCOUNTS_URL?: string;
+  ZOHO_CLIENT_ID?: string;
+  ZOHO_CLIENT_SECRET?: string;
+  ZOHO_REFRESH_TOKEN?: string;
 }
 
 type Cloudflare = Omit<PlatformProxy<Env>, "dispose">;

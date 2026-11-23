@@ -22,7 +22,7 @@ Core Remix + TinaCMS application — routes, page components, shared UI, entry p
 - Fonts: Comfortaa and Playfair Display (loaded in root.tsx via Google Fonts preconnect)
 - Import groups (enforced by ESLint): builtin/external first, then internal/parent/sibling/index, separated by newline
 
-- The contact action reads `GOOGLE_SHEETS_WEBAPP_URL` from the Cloudflare Pages runtime. Keep the binding server-side. The contact page loads independently of the submission binding.
+- The contact action creates a Zoho CRM Lead only after server-side validation. Keep `ZOHO_ACCOUNTS_URL`, `ZOHO_CLIENT_ID`, `ZOHO_CLIENT_SECRET`, and `ZOHO_REFRESH_TOKEN` in Cloudflare Pages runtime bindings. Use the organization’s regional Accounts URL and a Zoho Self Client refresh token scoped to `ZohoCRM.modules.leads.CREATE`. The contact page loads independently of these bindings.
 
 ## Work Guidance
 
