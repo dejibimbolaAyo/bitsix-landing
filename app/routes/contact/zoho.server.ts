@@ -58,7 +58,7 @@ async function getAccessToken(config: ZohoConfig) {
       client_secret: config.ZOHO_CLIENT_SECRET,
       refresh_token: config.ZOHO_REFRESH_TOKEN,
     }),
-    redirect: "error",
+    redirect: "manual",
     signal: AbortSignal.timeout(8_000),
   });
   if (!response.ok) throw new Error(`Zoho authentication failed (${response.status})`);
@@ -89,7 +89,7 @@ export async function createZohoLead(config: ZohoConfig, lead: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ data: [lead] }),
-    redirect: "error",
+    redirect: "manual",
     signal: AbortSignal.timeout(8_000),
   });
   if (response.status === 401 && cachedToken?.token === token) {
