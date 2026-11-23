@@ -30,9 +30,8 @@ const formSchema = z.object({
   contactMethod: z.string().min(1, "Contact method is required"),
 });
 
-export const action = async ({ request }: ActionFunctionArgs) => {
-  const env = process.env;
-  const googleSheetsUrl = env.GOOGLE_SHEETS_WEBAPP_URL;
+export const action = async ({ request, context }: ActionFunctionArgs) => {
+  const googleSheetsUrl = context.cloudflare.env.GOOGLE_SHEETS_WEBAPP_URL;
 
   if (!googleSheetsUrl) {
     console.error("Google Sheets URL is not configured");
@@ -102,13 +101,6 @@ export const action = async ({ request }: ActionFunctionArgs) => {
 };
 
 export const loader = async () => {
-  const env = process.env;
-  const googleSheetsUrl = env.GOOGLE_SHEETS_WEBAPP_URL;
-
-  if (!googleSheetsUrl) {
-    console.error("Google Sheets URL is not configured");
-  }
-
   try {
     const pageQuery = await client.queries.contact({
       relativePath: "contact.mdx",
@@ -118,10 +110,7 @@ export const loader = async () => {
       throw new Error("No page data found");
     }
 
-    return json({
-      query: pageQuery,
-      sheetsUrl: googleSheetsUrl,
-    });
+    return json({ query: pageQuery });
   } catch (error) {
     console.error("Error loading data:", error);
     throw error;
