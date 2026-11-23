@@ -2,76 +2,13 @@ import { Form, useActionData, useNavigation } from "@remix-run/react";
 import React, { useEffect } from "react";
 import toast from "react-hot-toast";
 
-import ServiceCard from "./ServiceCard";
+import { publicContactEmail } from "@app/site-contact";
 import type { ContactBlocksContactContactForm } from "@tina/__generated__/types";
 
 type ActionData = {
   success: boolean;
   error?: string;
 };
-
-const serviceCards = [
-  {
-    href: "/services/digital-transformation",
-    title: "Digital Transformation",
-    description: "End-to-end digital media & commerce solutions",
-    icon: (
-      <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          d="M13 10V3L4 14h7v7l9-11h-7z"
-        />
-      </svg>
-    ),
-  },
-  {
-    href: "/services/product-development",
-    title: "Product Development",
-    description: "Custom software and application development",
-    icon: (
-      <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-        />
-      </svg>
-    ),
-  },
-  {
-    href: "/services/cto-for-hire",
-    title: "CTO for Hire",
-    description: "Strategic technology leadership on demand",
-    icon: (
-      <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
-        />
-      </svg>
-    ),
-  },
-  {
-    href: "/services/engineers-for-hire",
-    title: "Engineers for Hire",
-    description: "Expert engineering talent for your projects",
-    icon: (
-      <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
-        />
-      </svg>
-    ),
-  },
-];
 
 const ContactContactForm: React.FC<{
   data: ContactBlocksContactContactForm;
@@ -145,51 +82,24 @@ const ContactContactForm: React.FC<{
   return (
     <section className="site-section scroll-mt-18 bg-paper" id="contact-form">
       <div className="site-container">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            {data.contactContactFormTitle ||
-              "Let's Build Something Amazing Together"}
-          </h2>
-          {data.contactContactFormSubtitle && (
-            <h3 className="text-xl md:text-2xl text-gray-600">
-              {data.contactContactFormSubtitle}
-            </h3>
-          )}
-        </div>
-
-        <div className="grid lg:grid-cols-2 gap-12 items-start">
-          {/* Contact Information */}
-          <div className="">
-            <div className="sticky top-24 space-y-8">
-              <div className="space-y-4">
-                <h3 className="text-2xl font-bold text-gray-900">
-                  Get in Touch
-                </h3>
-                <p className="text-gray-600">
-                  Have a project in mind? Fill out the form below and let&apos;s
-                  discuss how we can help bring your ideas to life.
-                </p>
-              </div>
-
-              {/* Service Cards */}
-              <div className="grid grid-cols-1 gap-4">
-                {serviceCards.map((card, index) => (
-                  <ServiceCard key={index} {...card} />
-                ))}
-              </div>
-            </div>
-          </div>
-          {/* Contact Form */}
-          <div className="lg:pl-12 lg:border-l lg:border-gray-200">
-            <div className="bg-white rounded-2xl shadow-sm p-8">
-              <div className="mb-8">
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                  Reach out to us about your project
-                </h3>
-                <p className="text-gray-600">
-                  We&apos;ll review your submission and get back to you within
-                  24 hours.
-                </p>
+        <div className="mx-auto max-w-2xl space-y-8">
+          <p className="text-center">
+            <a
+              href={`mailto:${publicContactEmail}`}
+              className="font-semibold text-primary underline underline-offset-4"
+            >
+              {publicContactEmail}
+            </a>
+          </p>
+          <div className="rounded-2xl bg-white p-5 shadow-sm sm:p-8">
+            <div className="space-y-8">
+              <div>
+                <h2 className="mb-2 text-2xl font-bold text-gray-900 md:text-3xl">
+                  {data.contactContactFormTitle || "Tell Us About Your Project"}
+                </h2>
+                {data.contactContactFormSubtitle && (
+                  <p className="text-gray-600">{data.contactContactFormSubtitle}</p>
+                )}
               </div>
 
               <Form method="post" className="space-y-6">

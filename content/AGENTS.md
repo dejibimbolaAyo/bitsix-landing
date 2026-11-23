@@ -21,3 +21,4 @@ All CMS-managed content in Markdown (`.mdx`) files, consumed by TinaCMS and rend
 ## Work Guidance
 
 - Use realistic engineering imagery for the homepage hero and Expertise section. Keep cartoon-style assets out of those placements.
+- Use BitSix Studio as the public brand and BITSIX TECHNOLOGY SOLUTIONS LIMITED as the legal operator in the About page and global footer.
