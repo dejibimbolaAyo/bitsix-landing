@@ -50,16 +50,21 @@ async function getAccessToken(config: ZohoConfig) {
     return cachedToken.token;
   }
 
-  const response = await fetch(`${config.ZOHO_ACCOUNTS_URL}/oauth/v2/token`, {
+  const tokenUrl = new URL("/oauth/v2/token", config.ZOHO_ACCOUNTS_URL);
+  tokenUrl.search = new URLSearchParams({
+    grant_type: "refresh_token",
+    client_id: config.ZOHO_CLIENT_ID,
+    client_secret: config.ZOHO_CLIENT_SECRET,
+    refresh_token: config.ZOHO_REFRESH_TOKEN,
+  }).toString();
+
+  const response = await fetch(tokenUrl, {
     method: "POST",
-    body: new URLSearchParams({
-      grant_type: "refresh_token",
-      client_id: config.ZOHO_CLIENT_ID,
-      client_secret: config.ZOHO_CLIENT_SECRET,
-      refresh_token: config.ZOHO_REFRESH_TOKEN,
-    }),
     redirect: "manual",
-    signal: AbortSignal.timeout(8_000),
+    signal: AbortSignal.timeout(15_000),
+  }).catch(() => {
+    // Never log the OAuth request URL, which contains credentials.
+    throw new Error("Zoho authentication request timed out or could not connect");
   });
   if (!response.ok) throw new Error(`Zoho authentication failed (${response.status})`);
 
@@ -90,7 +95,9 @@ export async function createZohoLead(config: ZohoConfig, lead: {
     },
     body: JSON.stringify({ data: [lead] }),
     redirect: "manual",
-    signal: AbortSignal.timeout(8_000),
+    signal: AbortSignal.timeout(15_000),
+  }).catch(() => {
+    throw new Error("Zoho lead request timed out or could not connect");
   });
   if (response.status === 401 && cachedToken?.token === token) {
     cachedToken = undefined;
