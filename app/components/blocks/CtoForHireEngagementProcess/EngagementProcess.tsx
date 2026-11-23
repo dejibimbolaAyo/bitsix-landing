@@ -12,11 +12,11 @@ const CtoForHireEngagementProcess: React.FC<CtoForHireEngagementProcessProps> = 
   data,
 }) => {
   return (
-    <section className="py-16 lg:py-24 bg-slate-50">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="relative rounded-3xl overflow-hidden shadow-2xl bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-800 text-white py-12 px-8 md:p-16 lg:p-20">
+    <section className="site-section bg-sand">
+      <div className="site-container">
+        <div className="relative rounded-3xl overflow-hidden shadow-2xl bg-primary text-primary-content py-12 px-8 md:p-16 lg:p-20">
           <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-white/10 rounded-full blur-3xl -z-10 pointer-events-none"></div>
-          <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-blue-400/20 rounded-full blur-3xl -z-10 pointer-events-none"></div>
+          <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-primary-content/15 rounded-full blur-3xl -z-10 pointer-events-none"></div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
             <div className="lg:col-span-7 flex flex-col items-start text-left">
@@ -32,7 +32,7 @@ const CtoForHireEngagementProcess: React.FC<CtoForHireEngagementProcessProps> = 
                     data,
                     "ctoForHireEngagementProcessSubtitle"
                   )}
-                  className="text-lg sm:text-xl font-medium text-blue-100 mb-6"
+                  className="text-lg sm:text-xl font-medium text-primary-content/90 mb-6"
                 >
                   {data.ctoForHireEngagementProcessSubtitle}
                 </p>
@@ -43,7 +43,7 @@ const CtoForHireEngagementProcess: React.FC<CtoForHireEngagementProcessProps> = 
                     data,
                     "ctoForHireEngagementProcessContent"
                   )}
-                  className="prose prose-invert max-w-none text-blue-50/90 mb-8 leading-relaxed"
+                  className="prose prose-invert max-w-none text-primary-content/90 mb-8 leading-relaxed"
                 >
                   <TinaMarkdown content={data.ctoForHireEngagementProcessContent} />
                 </div>
@@ -53,7 +53,7 @@ const CtoForHireEngagementProcess: React.FC<CtoForHireEngagementProcessProps> = 
                   <div>
                     <Link
                       to={data.ctoForHireEngagementProcessCtaLink}
-                      className="btn btn-white bg-white text-blue-700 hover:bg-blue-50 border-0 btn-lg shadow-xl hover:-translate-y-0.5 transform transition-all duration-200"
+                      className="site-action-inverse"
                     >
                       {data.ctoForHireEngagementProcessCtaText}
                     </Link>

@@ -11,7 +11,7 @@ const IconComponent = ({ iconName }: { iconName: string }) => {
   switch (iconName) {
     case "cube":
       return (
-        <div className="w-12 h-12 text-primary">
+        <div className="size-7 text-primary">
           <svg
             viewBox="0 0 24 24"
             fill="none"
@@ -27,7 +27,7 @@ const IconComponent = ({ iconName }: { iconName: string }) => {
       );
     case "chart":
       return (
-        <div className="w-12 h-12 text-primary">
+        <div className="size-7 text-primary">
           <svg
             viewBox="0 0 24 24"
             fill="none"
@@ -43,7 +43,7 @@ const IconComponent = ({ iconName }: { iconName: string }) => {
       );
     case "gear":
       return (
-        <div className="w-12 h-12 text-primary">
+        <div className="size-7 text-primary">
           <svg
             viewBox="0 0 24 24"
             fill="none"
@@ -63,7 +63,7 @@ const IconComponent = ({ iconName }: { iconName: string }) => {
       );
     default:
       return (
-        <div className="w-12 h-12 text-primary">
+        <div className="size-7 text-primary">
           <svg
             viewBox="0 0 24 24"
             fill="none"
@@ -84,37 +84,33 @@ const Innovation: React.FC<InnovationProps> = ({ data }) => {
   const { title, header, description, features, ctaText, ctaLink } = data;
 
   return (
-    <section className="py-24 relative bg-gradient-to-b from-base-100 to-base-300 overflow-hidden">
-      <div className="absolute inset-0 bg-grid-neutral/5 [mask-image:linear-gradient(to_bottom,transparent,black,transparent)]" />
-      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-warning/10 to-transparent" />
-      <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-warning/10 to-transparent" />
-
-      <div className="max-w-7xl mx-auto px-4 relative">
-        <div className="mb-16">
-          <h3
-            className="text-lg font-medium mb-4 text-secondary"
+    <section className="border-y border-slate-200 bg-sand py-14 lg:py-24">
+      <div className="site-container">
+        <div className="mb-9 lg:mb-12">
+          <p
+            className="mb-3 text-sm font-bold text-primary"
             data-tina-field={tinaField(data, "title")}
           >
             {title}
-          </h3>
+          </p>
           <h2
-            className="text-4xl font-bold mb-6 max-w-3xl text-primary"
+            className="mb-4 max-w-3xl text-balance text-3xl font-bold tracking-tight text-primary lg:text-4xl"
             data-tina-field={tinaField(data, "header")}
           >
             {header}
           </h2>
           <p
-            className="text-neutral max-w-3xl"
+            className="max-w-[65ch] leading-relaxed text-slate-700"
             data-tina-field={tinaField(data, "description")}
           >
             {description}
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-16 mb-16">
+        <div className="mb-8 grid gap-6 md:grid-cols-3 md:gap-8 lg:mb-12">
           {features?.map((feature, index) => (
-            <div key={index} className="flex flex-col items-start group">
-              <div className="transition-transform duration-300 group-hover:scale-110">
+            <div key={index} className="flex flex-col items-start border-t border-slate-300 pt-5">
+              <div className="mb-2">
                 <IconComponent iconName={feature?.icon || "default"} />
               </div>
               <h3
@@ -136,7 +132,7 @@ const Innovation: React.FC<InnovationProps> = ({ data }) => {
         <div className="flex gap-4">
           <Link
             to={ctaLink || "#"}
-            className="inline-flex items-center px-6 py-3 group text-secondary hover:text-warning transition-colors"
+            className="inline-flex items-center px-6 py-3 group text-primary hover:text-primary hover:underline transition-colors"
             data-tina-field={tinaField(data, "ctaText")}
           >
             {ctaText}

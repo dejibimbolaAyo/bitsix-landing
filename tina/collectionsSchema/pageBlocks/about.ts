@@ -3,7 +3,6 @@ import type { Collection } from "tinacms";
 import { aboutContentTemplate } from "@app/components/blocks/AboutContent/aboutContent.template";
 import { aboutCtaTemplate } from "@app/components/blocks/AboutCta/aboutCta.template";
 import { aboutHeroTemplate } from "@app/components/blocks/AboutHero/aboutHero.template";
-import { teamTemplate } from "@app/components/blocks/Team/team.template";
 
 export const aboutPageBlocksCollection: Collection = {
     label: "About",
@@ -34,7 +33,6 @@ export const aboutPageBlocksCollection: Collection = {
                 aboutHeroTemplate,
                 aboutContentTemplate,
                 aboutCtaTemplate,
-                teamTemplate,
             ],
         },
     ],

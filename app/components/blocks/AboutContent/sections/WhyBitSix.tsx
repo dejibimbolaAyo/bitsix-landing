@@ -14,26 +14,20 @@ const WhyBitSix: React.FC<WhyBitSixProps> = ({ data }) => {
   return (
     <section className="relative overflow-hidden">
       {/* Enhanced Decorative Elements */}
-      <div className="absolute -top-8 -left-8 w-32 h-32 bg-primary/15 rounded-full blur-3xl animate-pulse" />
-      <div className="absolute -top-8 -right-8 w-32 h-32 bg-primary/20 rounded-full blur-3xl animate-pulse delay-1000" />
-      <div className="absolute -bottom-16 left-1/2 w-48 h-48 bg-secondary/15 rounded-full blur-3xl animate-pulse delay-500" />
-      <div className="absolute top-1/2 -translate-y-1/2 -left-16 w-32 h-64 bg-gradient-to-br from-primary/20 to-secondary/15 rounded-full blur-3xl rotate-45" />
-      <div className="absolute top-1/2 -translate-y-1/2 -right-16 w-32 h-64 bg-gradient-to-bl from-secondary/20 to-primary/15 rounded-full blur-3xl -rotate-45" />
 
       {/* Main Content */}
       <div className="relative p-12 rounded-2xl bg-card/30 backdrop-blur-sm">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/[0.15] via-secondary/[0.1] to-transparent rounded-2xl" />
         <div className="relative z-10 space-y-16">
           {/* Header */}
           <div className="text-center max-w-2xl mx-auto">
             <div className="flex items-center gap-2 mb-4 justify-center">
-              <div className="w-2 h-2 rounded-full bg-secondary animate-pulse" />
+              <div className="w-2 h-2 rounded-full bg-primary/5 animate-pulse" />
               <span className="text-sm font-medium text-primary/90">
                 Why Choose Us
               </span>
             </div>
             <h2
-              className="text-4xl md:text-5xl font-bold mb-4 bg-clip-text text-primary"
+              className="text-4xl md:text-5xl font-bold mb-4 text-primary"
               data-tina-field={tinaField(data, "whyBitSixTitle")}
             >
               {whyBitSixTitle}
@@ -51,17 +45,15 @@ const WhyBitSix: React.FC<WhyBitSixProps> = ({ data }) => {
                   >
                     {/* Icon Container */}
                     <div className="relative mb-8">
-                      <div className="absolute inset-0 bg-gradient-to-br from-primary/15 to-secondary/20 rounded-2xl blur-2xl" />
-                      <div className="absolute inset-0 bg-gradient-to-br from-secondary/15 to-transparent rounded-2xl" />
-                      <div className="relative w-20 h-20 bg-card/90 backdrop-blur-sm rounded-2xl flex items-center justify-center border border-secondary/20 group-hover:border-secondary/30 transition-colors duration-300">
+                      <div className="relative w-20 h-20 bg-card/90 backdrop-blur-sm rounded-2xl flex items-center justify-center border border-primary/10 group-hover:border-primary/10 transition-colors duration-300">
                         {item.icon === "Lightbulb" && (
-                          <Lightbulb className="w-10 h-10 text-secondary group-hover:text-secondary/90 transition-colors duration-300" />
+                          <Lightbulb className="w-10 h-10 text-primary group-hover:text-primary/80 transition-colors duration-300" />
                         )}
                         {item.icon === "Wrench" && (
-                          <Wrench className="w-10 h-10 text-secondary group-hover:text-secondary/90 transition-colors duration-300" />
+                          <Wrench className="w-10 h-10 text-primary group-hover:text-primary/80 transition-colors duration-300" />
                         )}
                         {item.icon === "Rocket" && (
-                          <Rocket className="w-10 h-10 text-secondary group-hover:text-secondary/90 transition-colors duration-300" />
+                          <Rocket className="w-10 h-10 text-primary group-hover:text-primary/80 transition-colors duration-300" />
                         )}
                       </div>
                     </div>
@@ -90,7 +82,7 @@ const WhyBitSix: React.FC<WhyBitSixProps> = ({ data }) => {
             data-tina-field={tinaField(data, "whyBitSixConclusion")}
           >
             <span className="relative z-10">{whyBitSixConclusion}</span>
-            <span className="absolute inset-0 bg-gradient-to-r from-transparent via-secondary/15 to-transparent blur-2xl" />
+            <span className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/5 to-transparent blur-2xl" />
           </p>
         </div>
       </div>

@@ -17,6 +17,12 @@ export const serviceContentTemplate: Template = {
             required: false,
         },
         {
+            type: "image",
+            name: "serviceImage",
+            label: "Illustration/Image",
+            required: false,
+        },
+        {
             type: "object",
             name: "offerings",
             label: "Service Offerings",

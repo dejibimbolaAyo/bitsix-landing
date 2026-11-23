@@ -24,14 +24,14 @@ const CaseStudies: React.FC<CaseStudiesProps> = ({ data }) => {
   };
 
   return (
-    <section className="relative py-20 bg-base-100">
-      <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="site-section bg-paper">
+      <div className="site-container relative z-10">
         
         {/* Section Header */}
         <div className="max-w-3xl mb-16">
           <div className="flex items-center gap-2 mb-3">
-            <Layers className="w-5 h-5 text-secondary" />
-            <span className="text-sm font-semibold text-secondary uppercase tracking-widest">
+            <Layers className="w-5 h-5 text-primary" />
+            <span className="text-sm font-semibold text-primary uppercase tracking-widest">
               Project Portfolio
             </span>
           </div>
@@ -64,7 +64,7 @@ const CaseStudies: React.FC<CaseStudiesProps> = ({ data }) => {
                   className="flex flex-col p-8 rounded-2xl bg-card border border-neutral/10 shadow-lg hover:shadow-xl transition-all duration-300 relative group overflow-hidden"
                 >
                   {/* Subtle color highlight corner */}
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-secondary/5 to-transparent pointer-events-none" />
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-primary/5 to-transparent pointer-events-none" />
                   
                   <div>
                     {/* Header Row */}
@@ -85,7 +85,7 @@ const CaseStudies: React.FC<CaseStudiesProps> = ({ data }) => {
 
                     {/* Short Card Title */}
                     <h3
-                      className="text-2xl font-bold text-primary mb-3 leading-snug group-hover:text-secondary transition-colors duration-300"
+                      className="text-2xl font-bold text-primary mb-3 leading-snug group-hover:text-primary transition-colors duration-300"
                       data-tina-field={tinaField(item, "title")}
                     >
                       {item.title}
@@ -103,7 +103,7 @@ const CaseStudies: React.FC<CaseStudiesProps> = ({ data }) => {
                   {/* Expand Toggle Button */}
                   <button
                     onClick={() => toggleExpand(idx)}
-                    className="mt-6 flex items-center gap-2 text-sm font-semibold text-secondary hover:text-secondary-focus transition-colors duration-200 self-start group/btn"
+                    className="mt-6 flex items-center gap-2 text-sm font-semibold text-primary hover:underline transition-colors duration-200 self-start group/btn"
                   >
                     <span>{isExpanded ? "Hide Details" : "Read Full Case Study"}</span>
                     <ChevronDown

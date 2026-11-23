@@ -22,16 +22,16 @@ const FeaturedCaseStudies: React.FC<FeaturedCaseStudiesProps> = ({ data }) => {
   } = data;
 
   return (
-    <section className="relative py-20 bg-base-200/50">
+    <section className="site-section bg-sand">
       {/* Decorative gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/[0.02] to-transparent pointer-events-none" />
 
-      <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="site-container relative z-10">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="flex items-center gap-2 mb-3 justify-center">
-            <Sparkles className="w-5 h-5 text-secondary animate-pulse" />
-            <span className="text-sm font-semibold text-secondary uppercase tracking-widest">
+            <Sparkles className="w-5 h-5 text-primary animate-pulse" />
+            <span className="text-sm font-semibold text-primary uppercase tracking-widest">
               Flagship Project
             </span>
           </div>
@@ -54,7 +54,7 @@ const FeaturedCaseStudies: React.FC<FeaturedCaseStudiesProps> = ({ data }) => {
         {/* Featured Case Study Card */}
         {title && (
           <div className="relative rounded-3xl bg-card border border-neutral/10 shadow-xl overflow-hidden backdrop-blur-md">
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/[0.03] via-secondary/[0.02] to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/[0.03] via-primary/5 to-transparent" />
             <div className="relative z-10 grid lg:grid-cols-12 gap-0">
               
               {/* Content Panel (Left/Main) */}
@@ -67,7 +67,7 @@ const FeaturedCaseStudies: React.FC<FeaturedCaseStudiesProps> = ({ data }) => {
                       </span>
                     )}
                     {clientProfile && (
-                      <span className="px-3 py-1 rounded-full bg-secondary/15 text-primary text-xs font-medium border border-secondary/20">
+                      <span className="px-3 py-1 rounded-full bg-primary/5 text-primary text-xs font-medium border border-primary/10">
                         {clientProfile}
                       </span>
                     )}
@@ -144,7 +144,7 @@ const FeaturedCaseStudies: React.FC<FeaturedCaseStudiesProps> = ({ data }) => {
               {/* Impact Panel (Right) */}
               <div className="lg:col-span-5 p-8 sm:p-12 bg-neutral/[0.02] flex flex-col justify-center items-center relative overflow-hidden">
                 {/* Background decorative blob */}
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-secondary/10 rounded-full blur-3xl" />
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-primary/5 rounded-full blur-3xl" />
 
                 <div className="relative z-10 w-full space-y-8">
                   <h4 className="text-sm font-bold text-primary/80 uppercase tracking-widest text-center mb-4">

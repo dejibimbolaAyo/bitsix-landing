@@ -2,41 +2,48 @@ import { TinaMarkdown } from "tinacms/dist/rich-text";
 import type { TinaMarkdownContent } from "tinacms/dist/rich-text";
 
 export const components = {
+  h1: (props?: { children: JSX.Element }) => <h2>{props?.children}</h2>,
   // Call to Action component
   CallToAction: ({
     children,
     buttonText,
     buttonLink,
+    title,
+    url,
   }: {
-    children: TinaMarkdownContent;
-    buttonText: string;
-    buttonLink: string;
+    children?: TinaMarkdownContent;
+    buttonText?: string;
+    buttonLink?: string;
+    title?: string;
+    url?: string;
   }) => (
     <div className="my-8 p-6 bg-primary/10 rounded-lg">
-      <div className="prose prose-lg max-w-none dark:prose-invert">
-        <TinaMarkdown content={children} />
-      </div>
-      <a href={buttonLink} className="mt-4 btn btn-primary">
-        {buttonText}
-      </a>
+      {title && buttonText && <h3>{title}</h3>}
+      {children && <TinaMarkdown content={children} />}
+      {(buttonLink || url) && (buttonText || title) && (
+        <a href={buttonLink || url} className="not-prose site-action">
+          {buttonText || title}
+        </a>
+      )}
     </div>
   ),
 
-  // Info Box component
   InfoBox: ({
     children,
     title,
   }: {
-    children: TinaMarkdownContent;
-    title: string;
-  }) => (
-    <div className="my-8 p-6 bg-base-200 rounded-lg">
-      <h3 className="text-xl font-bold mb-4">{title}</h3>
-      <div className="prose prose-lg max-w-none dark:prose-invert">
+    children?: TinaMarkdownContent;
+    title?: string;
+  }) => {
+    if (!children?.children?.length) return null;
+
+    return (
+      <aside className="my-8 rounded-lg bg-base-200 p-6 [&>:first-child]:mt-0 [&>:last-child]:mb-0">
+        {title && <h3 className="text-xl font-bold">{title}</h3>}
         <TinaMarkdown content={children} />
-      </div>
-    </div>
-  ),
+      </aside>
+    );
+  },
 
   // Code Block component
   CodeBlock: ({
@@ -79,13 +86,15 @@ export const components = {
   Quote: ({
     children,
     author,
+    quote,
   }: {
-    children: TinaMarkdownContent;
+    children?: TinaMarkdownContent;
     author?: string;
+    quote?: string;
   }) => (
     <blockquote className="my-8 pl-6 border-l-4 border-primary">
-      <div className="prose prose-lg max-w-none dark:prose-invert">
-        <TinaMarkdown content={children} />
+      <div className="prose prose-lg max-w-none">
+        {children ? <TinaMarkdown content={children} /> : quote && <p>{quote}</p>}
       </div>
       {author && <footer className="mt-4 text-right italic">— {author}</footer>}
     </blockquote>

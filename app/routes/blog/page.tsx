@@ -1,5 +1,5 @@
 import { Link } from "@remix-run/react";
-import React from "react";
+import React, { useState } from "react";
 import { tinaField } from "tinacms/dist/react";
 
 import { getLastUpdateTime } from "../../../util/date";
@@ -34,8 +34,14 @@ export const BlogListPage: React.FC<PageProps> = ({ data }) => {
     (block) => block?.__typename === "BlogPageBlocksNewsletter"
   ) as BlogPageBlocksNewsletter | undefined;
 
+  const [activeCategory, setActiveCategory] = useState<string>();
+  const posts = data.posts.blogPostConnection.edges ?? [];
+  const visiblePosts = activeCategory
+    ? posts.filter((edge) => edge?.node?.category === activeCategory)
+    : posts;
+
   return (
-    <div className="min-h-screen bg-base-100">
+    <div className="min-h-screen bg-paper">
       {/* Hero Section */}
       {data.page.blogPage.blocks?.map((block) => {
         switch (block?.__typename) {
@@ -52,10 +58,10 @@ export const BlogListPage: React.FC<PageProps> = ({ data }) => {
       })}
 
       {/* Featured Posts Section */}
-      <section className="py-16 bg-base-200">
-        <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl font-bold mb-8 text-center">
+      <section className="site-section bg-paper">
+        <div className="site-container">
+          <div>
+            <h2 className="mb-8 text-3xl font-bold tracking-tight text-primary">
               Featured Articles
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -66,21 +72,21 @@ export const BlogListPage: React.FC<PageProps> = ({ data }) => {
                   <Link
                     key={node._sys.filename}
                     to={`/blog/${node._sys.filename}`}
-                    className="group h-full"
+                    className="group block h-full min-w-0 rounded-2xl focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
                   >
-                    <article className="bg-base-100 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 h-full flex flex-col">
+                    <article className="flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white transition-colors group-hover:border-slate-400">
                       {node.thumbnail && (
                         <div className="aspect-video overflow-hidden">
                           <img
                             src={node.thumbnail}
                             alt={node.title || ""}
-                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            className="w-full h-full object-cover motion-safe:group-hover:scale-105 motion-safe:transition-transform duration-300"
                             data-tina-field={tinaField(node, "thumbnail")}
                           />
                         </div>
                       )}
                       <div className="p-6 flex flex-col flex-grow">
-                        <div className="flex items-center gap-4 mb-4">
+                        <div className="mb-4 flex flex-wrap items-center gap-2">
                           {node.category && (
                             <span
                               className="badge badge-primary"
@@ -121,16 +127,19 @@ export const BlogListPage: React.FC<PageProps> = ({ data }) => {
       </section>
 
       {/* Blog List Section */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
+      <section className="site-section border-t border-slate-200 bg-sand">
+        <div className="site-container">
           <div className="max-w-4xl mx-auto">
-            <div className="flex justify-between items-center mb-8">
+            <div className="mb-8 flex flex-col gap-4 md:flex-row md:flex-wrap md:items-center md:justify-between">
               <h2 className="text-3xl font-bold">All Articles</h2>
-              <div className="flex gap-2">
+              <div className="flex flex-wrap gap-2">
                 {blogListBlock?.categories?.map((category) => (
                   <button
+                    type="button"
+                    aria-pressed={activeCategory === category?.name}
+                    onClick={() => setActiveCategory((current) => current === category?.name ? undefined : category?.name ?? undefined)}
                     key={category?.name || ""}
-                    className="btn btn-outline btn-sm"
+                    className="btn btn-outline min-h-11 aria-pressed:bg-primary aria-pressed:text-primary-content"
                     data-tina-field={tinaField(blogListBlock, "categories")}
                   >
                     {category?.name}
@@ -138,29 +147,30 @@ export const BlogListPage: React.FC<PageProps> = ({ data }) => {
                 ))}
               </div>
             </div>
-            <div className="space-y-8">
-              {data.posts.blogPostConnection.edges?.slice(2).map((edge) => {
+            <div className="space-y-4">
+              {visiblePosts.length === 0 && <p>No articles in this category yet.</p>}
+              {visiblePosts.map((edge) => {
                 const node = edge?.node;
                 if (!node) return null;
                 return (
                   <Link
                     key={node._sys.filename}
                     to={`/blog/${node._sys.filename}`}
-                    className="group block"
+                    className="group block rounded-2xl focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
                   >
-                    <article className="flex gap-6 items-start p-6 bg-base-200 rounded-lg hover:bg-base-300 transition-colors">
+                    <article className="flex flex-col gap-5 rounded-2xl border border-slate-200 bg-paper p-4 transition-colors group-hover:border-slate-400 sm:flex-row sm:items-start sm:p-5">
                       {node.thumbnail && (
-                        <div className="w-48 aspect-video flex-shrink-0 overflow-hidden rounded-lg">
+                        <div className="aspect-video w-full shrink-0 overflow-hidden rounded-lg sm:w-44">
                           <img
                             src={node.thumbnail}
                             alt={node.title || ""}
-                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            className="w-full h-full object-cover motion-safe:group-hover:scale-105 motion-safe:transition-transform duration-300"
                             data-tina-field={tinaField(node, "thumbnail")}
                           />
                         </div>
                       )}
-                      <div className="flex-grow">
-                        <div className="flex items-center gap-4 mb-2">
+                      <div className="min-w-0 grow">
+                        <div className="mb-2 flex flex-wrap items-center gap-2">
                           {node.category && (
                             <span
                               className="badge badge-primary"

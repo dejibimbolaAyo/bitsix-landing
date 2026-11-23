@@ -1,7 +1,9 @@
 import React from "react";
+import { Link } from "@remix-run/react";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
 import { tinaField } from "tinacms/dist/react";
-import { Link } from "@remix-run/react";
+
+import { MediaAsset } from "@components/ui/MediaAsset/MediaAsset";
 import { ProductDevelopmentBlocksProductDevelopmentProductShowcase } from "@tina/__generated__/types";
 
 interface ProductDevelopmentProductShowcaseProps {
@@ -12,16 +14,18 @@ const ProductDevelopmentProductShowcase: React.FC<
   ProductDevelopmentProductShowcaseProps
 > = ({ data }) => {
   return (
-    <section className="py-16 lg:py-24 bg-white border-b border-gray-100">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="site-section border-b border-slate-200 bg-paper">
+      <div className="site-container">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           
           {/* Image Column - Left (Alternating from Hero) */}
           {data.productDevelopmentProductShowcaseImage && (
             <div className="lg:col-span-5 order-2 lg:order-1 relative w-full flex justify-center">
-              <div className="relative w-full max-w-md lg:max-w-none aspect-[4/3] sm:aspect-video lg:aspect-[4/3] rounded-2xl overflow-hidden shadow-xl border border-slate-100">
-                <img
-                  data-tina-field={tinaField(data, "productDevelopmentProductShowcaseImage")}
+              <div
+                className="relative w-full max-w-md lg:max-w-none aspect-[4/3] sm:aspect-video lg:aspect-[4/3] rounded-2xl overflow-hidden shadow-xl border border-slate-100"
+                data-tina-field={tinaField(data, "productDevelopmentProductShowcaseImage")}
+              >
+                <MediaAsset
                   src={data.productDevelopmentProductShowcaseImage}
                   alt={data.productDevelopmentProductShowcaseTitle}
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
@@ -41,7 +45,7 @@ const ProductDevelopmentProductShowcase: React.FC<
             {data.productDevelopmentProductShowcaseSubtitle && (
               <p
                 data-tina-field={tinaField(data, "productDevelopmentProductShowcaseSubtitle")}
-                className="text-lg text-blue-600 font-semibold mb-6"
+                className="text-lg text-primary font-semibold mb-6"
               >
                 {data.productDevelopmentProductShowcaseSubtitle}
               </p>
@@ -54,7 +58,7 @@ const ProductDevelopmentProductShowcase: React.FC<
                   prose-li:relative prose-li:pl-6 prose-li:mb-3
                   prose-li:before:absolute prose-li:before:left-0 prose-li:before:top-[10px] 
                   prose-li:before:h-1.5 prose-li:before:w-1.5 prose-li:before:rounded-full 
-                  prose-li:before:bg-blue-500"
+                  prose-li:before:bg-primary"
               >
                 <TinaMarkdown content={data.productDevelopmentProductShowcaseContent} />
               </div>
@@ -64,6 +68,7 @@ const ProductDevelopmentProductShowcase: React.FC<
                 <div className="mt-2">
                   <Link
                     to={data.productDevelopmentProductShowcaseCtaLink}
+                    reloadDocument={data.productDevelopmentProductShowcaseCtaLink === "/resources/case-studies"}
                     className="btn btn-outline btn-primary shadow-sm hover:-translate-y-0.5 transform transition-all duration-200"
                   >
                     {data.productDevelopmentProductShowcaseCtaText}

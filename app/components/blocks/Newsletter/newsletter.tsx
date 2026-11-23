@@ -15,12 +15,11 @@ const Newsletter: React.FC<NewsletterProps> = ({ data }) => {
     newsletterInputPlaceholder,
     theme,
   } = data;
-  const bgColor = theme?.background || "primary";
-  const textColor = theme?.textColor || "primary-content";
+  const isLight = theme?.background?.startsWith("base-");
 
   return (
-    <section className={`py-16 bg-${bgColor} text-${textColor}`}>
-      <div className="container mx-auto px-4">
+    <section className={`site-section bg-${isLight ? "bg-sand text-primary" : "bg-primary text-primary-content"}`}>
+      <div className="site-container">
         <div className="max-w-2xl mx-auto text-center">
           <h2
             className="text-3xl font-bold mb-4"
@@ -34,16 +33,17 @@ const Newsletter: React.FC<NewsletterProps> = ({ data }) => {
           >
             {newsletterDescription}
           </p>
-          <form className="flex gap-4 max-w-md mx-auto">
+          <form className="mx-auto flex max-w-md flex-col gap-3 sm:flex-row">
             <input
               type="email"
+              aria-label="Email address"
               placeholder={newsletterInputPlaceholder}
-              className="input input-bordered flex-grow"
+              className="input input-bordered min-h-12 w-full min-w-0 bg-paper text-neutral"
               data-tina-field={tinaField(data, "newsletterInputPlaceholder")}
             />
             <button
               type="submit"
-              className="btn btn-secondary"
+              className={isLight ? "site-action" : "site-action-inverse"}
               data-tina-field={tinaField(data, "newsletterButtonText")}
             >
               {newsletterButtonText}

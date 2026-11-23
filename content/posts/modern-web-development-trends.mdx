@@ -22,9 +22,9 @@ The web development landscape is constantly evolving, with new technologies and 
 - Image optimization techniques
 
 <InfoBox title="Performance Impact">
-  - 53% of mobile users abandon sites that take over 3 seconds to load - A
-  1-second delay in page response can result in a 7% reduction in conversions -
-  Core Web Vitals are now a Google ranking factor
+  - 53% of mobile users abandon sites that take over 3 seconds to load
+  - A 1-second delay in page response can result in a 7% reduction in conversions
+  - Core Web Vitals are now a Google ranking factor
 </InfoBox>
 
 ### 2. Modern JavaScript Frameworks
@@ -34,11 +34,11 @@ The web development landscape is constantly evolving, with new technologies and 
 - SvelteKit adoption
 - Astro's growing popularity
 
-<CodeBlock language="javascript">
+```javascript
 // Example of React Server Component
 async function BlogPost({ id }) {
   const post = await fetchPost(id);
-  
+
   return (
     <article>
       <h1>{post.title}</h1>
@@ -46,7 +46,7 @@ async function BlogPost({ id }) {
     </article>
   );
 }
-</CodeBlock>
+```
 
 ### 3. Web Components and Micro-Frontends
 
@@ -76,12 +76,9 @@ async function BlogPost({ id }) {
 - App-like experience
 - Installation capabilities
 
-<ImageGallery
-  images={[
-    "/images/blog/pwa-features.jpg",
-    "/images/blog/wasm-performance.jpg",
-  ]}
-/>
+![Progressive web app features](/images/blog/pwa-features.jpg)
+
+![WebAssembly performance](/images/blog/wasm-performance.jpg)
 
 ## Development Tools and Practices
 

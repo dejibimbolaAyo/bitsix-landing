@@ -2,7 +2,7 @@ import { Link } from "@remix-run/react";
 import React from "react";
 import { tinaField } from "tinacms/dist/react";
 
-import { Carousel } from "@app/components/ui/Carousel/Carousel";
+import { MediaAsset } from "@components/ui/MediaAsset/MediaAsset";
 import {
   HomeBlocksExpertise,
   HomeBlocksExpertiseSubcopy,
@@ -15,28 +15,22 @@ interface ExpertiseProps {
 const Expertise: React.FC<ExpertiseProps> = ({ data }) => {
   const { title, header, description, subcopy, ctaText, ctaLink, carousel } =
     data;
-  const carouselSlides =
-    carousel?.map((slide) => ({
-      image: slide?.image || undefined,
-      alt: slide?.title || undefined,
-      title: slide?.title || undefined,
-      description: slide?.description || undefined,
-    })) || [];
+  const illustration = carousel?.[0];
 
   return (
-    <section className="py-16 bg-base-100">
+    <section className="bg-paper py-14 lg:py-24">
       <div className="text-base-content">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="flex flex-col lg:flex-row lg:gap-12">
-            <div className="flex-1 max-w-2xl">
+        <div className="site-container">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-9 lg:gap-12 xl:gap-16 items-center">
+            <div className="max-w-2xl lg:order-2">
               <p
-                className="text-primary font-semibold text-lg mb-3"
+                className="text-primary font-bold text-sm mb-3"
                 data-tina-field={tinaField(data, "title")}
               >
                 {title}
               </p>
               <h2
-                className="text-3xl lg:text-4xl font-bold leading-tight mb-4"
+                className="text-3xl lg:text-4xl font-bold leading-tight tracking-tight text-balance mb-4"
                 data-tina-field={tinaField(data, "header")}
               >
                 {header}
@@ -54,7 +48,7 @@ const Expertise: React.FC<ExpertiseProps> = ({ data }) => {
                     return (
                       <div
                         key={subText.title}
-                        className="bg-base-200 rounded-lg p-5"
+                        className="border-t border-slate-200 pt-4"
                       >
                         <h3
                           className="text-lg font-semibold mb-2"
@@ -75,7 +69,7 @@ const Expertise: React.FC<ExpertiseProps> = ({ data }) => {
               )}
               <Link
                 to={ctaLink}
-                className="inline-flex items-center px-6 py-3 group"
+                className="group inline-flex min-h-11 items-center gap-1 font-bold text-primary underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
                 data-tina-field={tinaField(data, "ctaText")}
               >
                 {ctaText}
@@ -92,11 +86,11 @@ const Expertise: React.FC<ExpertiseProps> = ({ data }) => {
                 </svg>
               </Link>
             </div>
-            <div className="flex-1 mt-8 lg:mt-0">
-              <div className="rounded-lg overflow-hidden">
-                <Carousel slides={carouselSlides} />
-              </div>
-            </div>
+            <MediaAsset
+              src={illustration?.image ?? ""}
+              alt={illustration?.title ?? ""}
+              className="aspect-[4/3] w-full rounded-2xl object-cover"
+            />
           </div>
         </div>
       </div>

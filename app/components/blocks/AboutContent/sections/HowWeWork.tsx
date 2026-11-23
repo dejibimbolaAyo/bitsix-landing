@@ -11,7 +11,7 @@ interface HowWeWorkProps {
 
 const ProcessIcon = ({ step }: { step: number }) => {
   const iconClass =
-    "w-8 h-8 text-primary group-hover:text-secondary transition-colors duration-300";
+    "w-8 h-8 text-primary group-hover:text-primary transition-colors duration-300";
   switch (step) {
     case 0:
       return <Workflow className={iconClass} />;
@@ -39,9 +39,6 @@ const HowWeWork: React.FC<HowWeWorkProps> = ({ data }) => {
   return (
     <section className="relative overflow-hidden py-24">
       {/* Decorative Elements */}
-      <div className="absolute -top-24 -left-24 w-96 h-96 bg-primary/5 rounded-full blur-3xl animate-pulse" />
-      <div className="absolute top-1/2 -right-24 w-96 h-96 bg-secondary/5 rounded-full blur-3xl animate-pulse delay-1000" />
-      <div className="absolute bottom-0 left-1/3 w-96 h-96 bg-primary/3 rounded-full blur-3xl animate-pulse delay-500" />
 
       <div className="relative max-w-7xl mx-auto px-4">
         {/* Header */}
@@ -52,7 +49,7 @@ const HowWeWork: React.FC<HowWeWorkProps> = ({ data }) => {
           </div>
 
           <h2
-            className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary via-secondary to-primary/90"
+            className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 text-primary"
             data-tina-field={tinaField(data, "howWeWorkTitle")}
           >
             {howWeWorkTitle}
@@ -69,11 +66,10 @@ const HowWeWork: React.FC<HowWeWorkProps> = ({ data }) => {
                   className="group relative transform transition-all duration-300 hover:-translate-y-1"
                   data-tina-field={tinaField(principle)}
                 >
-                  <div className="relative p-8 rounded-2xl bg-gradient-to-br from-primary/[0.05] via-secondary/[0.03] to-transparent border border-primary/5 group-hover:border-secondary/10 transition-colors duration-500">
+                  <div className="relative p-8 rounded-2xl bg-gradient-to-br from-primary/[0.05] via-primary/5 to-transparent border border-primary/5 group-hover:border-primary/10 transition-colors duration-500">
                     {/* Icon */}
                     <div className="mb-6">
                       <div className="relative">
-                        <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-secondary/5 rounded-2xl blur-xl opacity-50 group-hover:opacity-100 transition-opacity duration-500" />
                         <div className="relative w-16 h-16 bg-card/80 backdrop-blur-sm rounded-2xl flex items-center justify-center">
                           <ProcessIcon step={index} />
                         </div>

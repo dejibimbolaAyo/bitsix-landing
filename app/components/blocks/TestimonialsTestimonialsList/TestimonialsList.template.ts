@@ -38,19 +38,16 @@ export const testimonialsTestimonialsListTemplate: Template = {
           type: "string",
           name: "authorName",
           label: "Author Name",
-          required: true,
         },
         {
           type: "string",
           name: "authorRole",
           label: "Author Role",
-          required: true,
         },
         {
           type: "string",
           name: "companyType",
           label: "Company Type/Profile",
-          required: true,
         },
         {
           type: "number",

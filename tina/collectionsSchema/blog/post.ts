@@ -48,12 +48,15 @@ export const postCollection: Collection = {
                 {
                     name: "InfoBox",
                     label: "Info Box",
-                    fields: [{ type: "string", name: "title", label: "Title" }],
+                    fields: [
+                        { type: "string", name: "title", label: "Title" },
+                        { type: "rich-text", name: "children", label: "Body" },
+                    ],
                 },
                 {
                     name: "Quote",
                     label: "Quote",
-                    fields: [{ type: "string", name: "author", label: "Author" }, { type: "string", name: "quote", label: "Quote" }],
+                    fields: [{ type: "string", name: "author", label: "Author" }, { type: "string", name: "quote", label: "Quote" }, { type: "rich-text", name: "children", label: "Body" }],
                 },
                 {
                     name: "Image",
@@ -78,7 +81,11 @@ export const postCollection: Collection = {
                 {
                     name: "CallToAction",
                     label: "Call to Action",
-                    fields: [{ type: "string", name: "title", label: "Title" }, { type: "string", name: "url", label: "URL" }],
+                    fields: [{ type: "string", name: "title", label: "Title" }, { type: "string", name: "url", label: "URL" },
+                        { type: "string", name: "buttonText", label: "Button Text" },
+                        { type: "string", name: "buttonLink", label: "Button Link" },
+                        { type: "rich-text", name: "children", label: "Body" },
+                    ],
                 }
             ],
         },

@@ -13,8 +13,6 @@ type ActionData = {
 const serviceCards = [
   {
     href: "/services/digital-transformation",
-    iconColor: "text-blue-600",
-    bgColor: "bg-blue-100",
     title: "Digital Transformation",
     description: "End-to-end digital media & commerce solutions",
     icon: (
@@ -30,8 +28,6 @@ const serviceCards = [
   },
   {
     href: "/services/product-development",
-    iconColor: "text-purple-600",
-    bgColor: "bg-purple-100",
     title: "Product Development",
     description: "Custom software and application development",
     icon: (
@@ -47,8 +43,6 @@ const serviceCards = [
   },
   {
     href: "/services/cto-for-hire",
-    iconColor: "text-green-600",
-    bgColor: "bg-green-100",
     title: "CTO for Hire",
     description: "Strategic technology leadership on demand",
     icon: (
@@ -64,8 +58,6 @@ const serviceCards = [
   },
   {
     href: "/services/engineers-for-hire",
-    iconColor: "text-yellow-600",
-    bgColor: "bg-yellow-100",
     title: "Engineers for Hire",
     description: "Expert engineering talent for your projects",
     icon: (
@@ -94,8 +86,8 @@ const ContactContactForm: React.FC<{
         duration: 4000,
         position: "top-right",
         style: {
-          background: "#10B981",
-          color: "#fff",
+          background: "var(--color-primary)",
+          color: "var(--color-primary-content)",
           padding: "1rem",
           borderRadius: "0.5rem",
           fontSize: "1rem",
@@ -108,8 +100,8 @@ const ContactContactForm: React.FC<{
         duration: 4000,
         position: "top-right",
         style: {
-          background: "#EF4444",
-          color: "#fff",
+          background: "var(--color-error)",
+          color: "var(--color-error-content)",
           padding: "1rem",
           borderRadius: "0.5rem",
           fontSize: "1rem",
@@ -151,8 +143,8 @@ const ContactContactForm: React.FC<{
   const formFields = data.formFields ?? defaultFormFields;
 
   return (
-    <section className="px-8 py-12 lg:py-16" id="contact-form">
-      <div className="container mx-auto max-w-7xl">
+    <section className="site-section scroll-mt-18 bg-paper" id="contact-form">
+      <div className="site-container">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             {data.contactContactFormTitle ||
@@ -208,7 +200,7 @@ const ContactContactForm: React.FC<{
                     className="block text-sm font-medium text-gray-700"
                   >
                     {formFields.fullNameLabel}{" "}
-                    <span className="text-red-500">*</span>
+                    <span className="text-error">*</span>
                   </label>
                   <div className="relative">
                     <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -232,7 +224,7 @@ const ContactContactForm: React.FC<{
                       name="fullName"
                       required
                       placeholder="John Doe"
-                      className="w-full pl-10 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-200"
+                      className="w-full pl-10 px-4 py-2 border border-slate-500 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-colors duration-200"
                     />
                   </div>
                 </div>
@@ -244,7 +236,7 @@ const ContactContactForm: React.FC<{
                     className="block text-sm font-medium text-gray-700"
                   >
                     {formFields.emailLabel}{" "}
-                    <span className="text-red-500">*</span>
+                    <span className="text-error">*</span>
                   </label>
                   <div className="relative">
                     <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -268,7 +260,7 @@ const ContactContactForm: React.FC<{
                       name="email"
                       required
                       placeholder="john@example.com"
-                      className="w-full pl-10 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-200"
+                      className="w-full pl-10 px-4 py-2 border border-slate-500 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-colors duration-200"
                     />
                   </div>
                 </div>
@@ -302,7 +294,7 @@ const ContactContactForm: React.FC<{
                       id="phone"
                       name="phone"
                       placeholder="+1 (555) 000-0000"
-                      className="w-full pl-10 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-200"
+                      className="w-full pl-10 px-4 py-2 border border-slate-500 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-colors duration-200"
                     />
                   </div>
                 </div>
@@ -336,7 +328,7 @@ const ContactContactForm: React.FC<{
                       id="company"
                       name="company"
                       placeholder="Acme Inc."
-                      className="w-full pl-10 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-200"
+                      className="w-full pl-10 px-4 py-2 border border-slate-500 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-colors duration-200"
                     />
                   </div>
                 </div>
@@ -348,7 +340,7 @@ const ContactContactForm: React.FC<{
                     className="block text-sm font-medium text-gray-700"
                   >
                     {formFields.projectTypeLabel}{" "}
-                    <span className="text-red-500">*</span>
+                    <span className="text-error">*</span>
                   </label>
                   <div className="relative">
                     <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -370,7 +362,7 @@ const ContactContactForm: React.FC<{
                       id="projectType"
                       name="projectType"
                       required
-                      className="w-full pl-10 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-200 appearance-none"
+                      className="w-full pl-10 px-4 py-2 border border-slate-500 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-colors duration-200 appearance-none"
                     >
                       <option value="">Select a project type</option>
                       {formFields.projectTypeOptions?.map((option: string) => (
@@ -404,7 +396,7 @@ const ContactContactForm: React.FC<{
                     className="block text-sm font-medium text-gray-700"
                   >
                     {formFields.helpLabel}{" "}
-                    <span className="text-red-500">*</span>
+                    <span className="text-error">*</span>
                   </label>
                   <div className="relative">
                     <div className="absolute top-3 left-3">
@@ -428,7 +420,7 @@ const ContactContactForm: React.FC<{
                       required
                       rows={4}
                       placeholder="Describe your project goals, timeline, and any specific requirements..."
-                      className="w-full pl-10 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-200"
+                      className="w-full pl-10 px-4 py-2 border border-slate-500 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-colors duration-200"
                     />
                   </div>
                 </div>
@@ -460,7 +452,7 @@ const ContactContactForm: React.FC<{
                     <select
                       id="budget"
                       name="budget"
-                      className="w-full pl-10 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-200 appearance-none"
+                      className="w-full pl-10 px-4 py-2 border border-slate-500 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-colors duration-200 appearance-none"
                     >
                       <option value="">Select a budget range</option>
                       {formFields.budgetOptions?.map(
@@ -496,7 +488,7 @@ const ContactContactForm: React.FC<{
                     className="block text-sm font-medium text-gray-700"
                   >
                     {formFields.contactMethodLabel}{" "}
-                    <span className="text-red-500">*</span>
+                    <span className="text-error">*</span>
                   </label>
                   <div className="relative">
                     <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -518,7 +510,7 @@ const ContactContactForm: React.FC<{
                       id="contactMethod"
                       name="contactMethod"
                       required
-                      className="w-full pl-10 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-200 appearance-none"
+                      className="w-full pl-10 px-4 py-2 border border-slate-500 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-colors duration-200 appearance-none"
                     >
                       <option value="">Select preferred contact method</option>
                       {formFields.contactMethodOptions?.map(
@@ -552,7 +544,7 @@ const ContactContactForm: React.FC<{
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className={`w-full btn btn-primary py-4 text-lg font-medium ${
+                    className={`site-action w-full disabled:opacity-60 ${
                       isSubmitting ? "cursor-not-allowed" : ""
                     }`}
                   >

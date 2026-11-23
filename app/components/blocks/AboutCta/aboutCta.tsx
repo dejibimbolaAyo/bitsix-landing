@@ -27,7 +27,7 @@ const AboutCta: React.FC<AboutCtaProps> = ({ data }) => {
       </p>
       <a
         href={buttonLink}
-        className="inline-flex items-center justify-center gap-2 rounded-md bg-primary px-8 py-3 text-sm font-medium text-primary-foreground shadow hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
+        className="site-action"
         data-tina-field={tinaField(data, "buttonText")}
       >
         {buttonText} <ArrowRight className="w-4 h-4" />

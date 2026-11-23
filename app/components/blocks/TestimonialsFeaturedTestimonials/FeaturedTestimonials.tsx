@@ -37,14 +37,14 @@ const FeaturedTestimonials: React.FC<FeaturedTestimonialsProps> = ({ data }) => 
   } = data;
 
   return (
-    <section className="relative py-20 bg-base-200/50">
-      <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="site-section bg-sand">
+      <div className="site-container relative z-10">
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="flex items-center gap-2 mb-3 justify-center">
-            <Sparkles className="w-5 h-5 text-secondary animate-pulse" />
-            <span className="text-sm font-semibold text-secondary uppercase tracking-widest">
+            <Sparkles className="w-5 h-5 text-primary animate-pulse" />
+            <span className="text-sm font-semibold text-primary uppercase tracking-widest">
               Executive Feedback
             </span>
           </div>
@@ -67,10 +67,10 @@ const FeaturedTestimonials: React.FC<FeaturedTestimonialsProps> = ({ data }) => 
         {/* Featured Testimonial Card */}
         {quote && (
           <div className="max-w-4xl mx-auto relative rounded-3xl bg-card border border-neutral/10 shadow-xl p-8 sm:p-12 md:p-16 overflow-hidden backdrop-blur-md">
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/[0.03] via-secondary/[0.02] to-transparent pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/[0.03] via-primary/5 to-transparent pointer-events-none" />
             
             {/* Big quote mark icon */}
-            <Quote className="absolute top-10 left-10 w-24 h-24 text-secondary/[0.04] pointer-events-none transform -translate-x-4 -translate-y-4" />
+            <Quote className="absolute top-10 left-10 w-24 h-24 text-primary/5 pointer-events-none transform -translate-x-4 -translate-y-4" />
 
             <div className="relative z-10 flex flex-col items-center text-center">
               
@@ -93,11 +93,11 @@ const FeaturedTestimonials: React.FC<FeaturedTestimonialsProps> = ({ data }) => 
                   <img
                     src={avatar}
                     alt={authorName}
-                    className="w-14 h-14 rounded-full object-cover border border-secondary/20 shadow"
+                    className="w-14 h-14 rounded-full object-cover border border-primary/10 shadow"
                     data-tina-field={tinaField(data, "avatar")}
                   />
                 ) : (
-                  <div className="w-14 h-14 rounded-full bg-secondary/15 flex items-center justify-center border border-secondary/20 text-primary font-bold text-lg">
+                  <div className="w-14 h-14 rounded-full bg-primary/5 flex items-center justify-center border border-primary/10 text-primary font-bold text-lg">
                     {authorName ? authorName.charAt(0) : "C"}
                   </div>
                 )}
@@ -112,7 +112,7 @@ const FeaturedTestimonials: React.FC<FeaturedTestimonialsProps> = ({ data }) => 
                     <span data-tina-field={tinaField(data, "authorRole")}>{authorRole}</span>
                     <span className="hidden sm:inline text-neutral/30">•</span>
                     <span 
-                      className="font-semibold text-secondary"
+                      className="font-semibold text-primary"
                       data-tina-field={tinaField(data, "companyType")}
                     >
                       {companyType}

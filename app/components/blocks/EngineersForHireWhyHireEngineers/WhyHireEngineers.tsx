@@ -12,8 +12,8 @@ const EngineersForHireWhyHireEngineers: React.FC<
   EngineersForHireWhyHireEngineersProps
 > = ({ data }) => {
   return (
-    <section className="py-16 lg:py-24 bg-white border-b border-gray-100">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="site-section border-b border-slate-200 bg-paper">
+      <div className="site-container">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           {data.engineersForHireWhyHireEngineersImage && (
             <div className="lg:col-span-5 order-2 lg:order-1 relative w-full flex justify-center">
@@ -47,7 +47,7 @@ const EngineersForHireWhyHireEngineers: React.FC<
                   data,
                   "engineersForHireWhyHireEngineersSubtitle"
                 )}
-                className="text-lg text-blue-600 font-semibold mb-6"
+                className="text-lg text-primary font-semibold mb-6"
               >
                 {data.engineersForHireWhyHireEngineersSubtitle}
               </p>
@@ -63,7 +63,7 @@ const EngineersForHireWhyHireEngineers: React.FC<
                   prose-li:relative prose-li:pl-6 prose-li:mb-3
                   prose-li:before:absolute prose-li:before:left-0 prose-li:before:top-[10px] 
                   prose-li:before:h-1.5 prose-li:before:w-1.5 prose-li:before:rounded-full 
-                  prose-li:before:bg-blue-500"
+                  prose-li:before:bg-primary"
               >
                 <TinaMarkdown
                   content={data.engineersForHireWhyHireEngineersContent}
@@ -75,6 +75,7 @@ const EngineersForHireWhyHireEngineers: React.FC<
                 <div className="mt-2">
                   <Link
                     to={data.engineersForHireWhyHireEngineersCtaLink}
+                    reloadDocument={data.engineersForHireWhyHireEngineersCtaLink === "/resources/case-studies"}
                     className="btn btn-outline btn-primary shadow-sm hover:-translate-y-0.5 transform transition-all duration-200"
                   >
                     {data.engineersForHireWhyHireEngineersCtaText}

@@ -2,55 +2,101 @@ import { Link } from "@remix-run/react";
 import React from "react";
 import { tinaField } from "tinacms/dist/react";
 
+import { MediaAsset } from "@components/ui/MediaAsset/MediaAsset";
 import { HomeBlocksHero } from "@tina/__generated__/types";
+
 interface HeroProps {
   data: HomeBlocksHero;
 }
 
 const Hero: React.FC<HeroProps> = ({ data }) => {
-  const { heroImage, title, heroSubtitle, heroCtaText, heroCtaLink } = data;
+  const {
+    heroImage,
+    title,
+    heroSubtitle,
+    heroCtaText,
+    heroCtaLink,
+    rightCardText,
+    stat1Value,
+    stat1Label,
+    stat2Value,
+    stat2Label,
+    smallerMobileBodyText,
+  } = data;
+
+  const subtitleSizeClass = smallerMobileBodyText
+    ? "text-sm md:text-base"
+    : "text-base md:text-lg";
+
   return (
-    <section
-      data-tina-field={tinaField(data, "heroImage")}
-      className="relative min-h-[90vh] flex items-center bg-cover bg-center bg-no-repeat"
-      style={{
-        backgroundImage: `url(${heroImage ?? ""})`,
-      }}
-    >
-      <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/50 backdrop-blur-[2px]"></div>
-      <div className="max-w-7xl mx-auto px-4 relative">
-        <h1
-          data-tina-field={tinaField(data, "title")}
-          className="text-4xl md:text-5xl lg:text-7xl font-bold text-white mb-6 leading-tight animate-fade-in"
-        >
-          {title}
-        </h1>
+    <section className="site-hero">
+      <div className="site-container">
+        <div className="grid items-center gap-9 lg:grid-cols-2 lg:gap-12 xl:gap-16">
+          <div>
+            <h1
+              data-tina-field={tinaField(data, "title")}
+              className="max-w-[12ch] text-balance text-[clamp(2.35rem,5.6vw,5rem)] font-bold leading-[1.02] tracking-[-0.055em] text-primary"
+            >
+              {title}
+            </h1>
 
-        <p
-          data-tina-field={tinaField(data, "heroSubtitle")}
-          className="text-lg md:text-xl text-gray-200 mb-8 max-w-2xl leading-relaxed animate-fade-in-up"
-        >
-          {heroSubtitle}
-        </p>
+            <div className="mt-5 max-w-[32rem]">
+              <p
+                data-tina-field={tinaField(data, "rightCardText")}
+                className="text-lg sm:text-xl font-semibold text-primary leading-snug tracking-tight"
+              >
+                {rightCardText ?? "We are building the future together by using cutting-edge technology"}
+              </p>
+              <p
+                data-tina-field={tinaField(data, "heroSubtitle")}
+                className={`mt-3 ${subtitleSizeClass} text-slate-600 leading-relaxed font-normal max-w-[34rem]`}
+              >
+                {heroSubtitle}
+              </p>
+            </div>
 
-        <Link
-          to={heroCtaLink ?? "/"}
-          className="inline-flex items-center btn btn-primary btn-lg gap-2 text-lg px-8 py-4 hover:scale-105 transform transition-transform duration-200 animate-fade-in-up"
-        >
-          {heroCtaText}
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-5 w-5"
-            viewBox="0 0 20 20"
-            fill="currentColor"
-          >
-            <path
-              fillRule="evenodd"
-              d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-              clipRule="evenodd"
-            />
-          </svg>
-        </Link>
+            <div className="mt-6 flex flex-wrap items-center gap-4 sm:gap-5">
+              {heroCtaText && (
+                <Link
+                  to={heroCtaLink ?? "/"}
+                  data-tina-field={tinaField(data, "heroCtaText")}
+                  className="site-action"
+                >
+                  <span>{heroCtaText}</span>
+                  <svg aria-hidden="true" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+                  </svg>
+                </Link>
+              )}
+            </div>
+
+          </div>
+
+          <MediaAsset
+            src={heroImage ?? ""}
+            alt=""
+            className="aspect-[5/4] w-full rounded-2xl object-cover"
+          />
+        </div>
+
+        <dl className="mt-9 grid grid-cols-2 gap-5 border-t border-slate-300 pt-5 sm:gap-10 lg:mt-12">
+          <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:gap-4">
+            <dt data-tina-field={tinaField(data, "stat1Label")} className="text-sm leading-snug text-slate-700">
+              {stat1Label ?? "Engineering Hours Delivered"}
+            </dt>
+            <dd data-tina-field={tinaField(data, "stat1Value")} className="order-first text-2xl font-bold tabular-nums text-primary">
+              {stat1Value ?? "18k+"}
+            </dd>
+          </div>
+          <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:gap-4">
+            <dt data-tina-field={tinaField(data, "stat2Label")} className="text-sm leading-snug text-slate-700">
+              {stat2Label ?? "Years Building Software"}
+            </dt>
+            <dd data-tina-field={tinaField(data, "stat2Value")} className="order-first text-2xl font-bold tabular-nums text-primary">
+              {stat2Value ?? "20+"}
+            </dd>
+          </div>
+        </dl>
       </div>
     </section>
   );

@@ -12,10 +12,10 @@ const EngineersForHireTestimonialsAndCaseStudies: React.FC<
   EngineersForHireTestimonialsAndCaseStudiesProps
 > = ({ data }) => {
   return (
-    <section className="relative overflow-hidden py-16 lg:py-24 bg-slate-950 text-white border-b border-slate-900">
-      <div className="absolute top-1/2 left-1/2 w-[600px] h-[600px] bg-blue-500/10 rounded-full blur-3xl -z-10 pointer-events-none -translate-x-1/2 -translate-y-1/2"></div>
+    <section className="relative overflow-hidden site-section bg-primary text-primary-content border-b border-primary">
+      <div className="absolute top-1/2 left-1/2 w-[600px] h-[600px] bg-primary-content/10 rounded-full blur-3xl -z-10 pointer-events-none -translate-x-1/2 -translate-y-1/2"></div>
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
+      <div className="site-container relative">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2
             data-tina-field={tinaField(
@@ -32,7 +32,7 @@ const EngineersForHireTestimonialsAndCaseStudies: React.FC<
                 data,
                 "engineersForHireTestimonialsAndCaseStudiesSubtitle"
               )}
-              className="text-lg text-blue-400 font-medium"
+              className="text-lg text-primary-content/90 font-medium"
             >
               {data.engineersForHireTestimonialsAndCaseStudiesSubtitle}
             </p>
@@ -41,7 +41,7 @@ const EngineersForHireTestimonialsAndCaseStudies: React.FC<
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           <div className="lg:col-span-7 flex flex-col items-start relative pl-8 lg:pl-12">
-            <span className="absolute top-[-20px] left-0 text-7xl lg:text-8xl font-serif text-blue-500/20 select-none pointer-events-none">
+            <span className="absolute top-[-20px] left-0 text-7xl lg:text-8xl font-serif text-primary-content/20 select-none pointer-events-none">
               &ldquo;
             </span>
 
@@ -68,7 +68,7 @@ const EngineersForHireTestimonialsAndCaseStudies: React.FC<
                     to={
                       data.engineersForHireTestimonialsAndCaseStudiesCtaLink
                     }
-                    className="btn btn-secondary shadow-md hover:-translate-y-0.5 transform transition-all duration-200"
+                    className="site-action-inverse"
                   >
                     {data.engineersForHireTestimonialsAndCaseStudiesCtaText}
                   </Link>

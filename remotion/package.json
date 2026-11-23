@@ -1,0 +1,28 @@
+{
+  "name": "bitsix-remotion",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build:hero": "remotion render --image-format=png --pixel-format=yuva420p --codec=vp9 src/Root.tsx HeroVideo ../public/videos/hero-video.webm",
+    "build:expertise": "remotion render --image-format=png --pixel-format=yuva420p --codec=vp9 src/Root.tsx ExpertiseIllustration ../public/videos/expertise-illustration.webm",
+    "build:digital-transformation": "remotion render --image-format=png --pixel-format=yuva420p --codec=vp9 src/Root.tsx DigitalTransformationHero ../public/videos/digital-transformation-hero.webm",
+    "build:digital-transformation-services": "remotion render --image-format=png --pixel-format=yuva420p --codec=vp9 src/Root.tsx DigitalTransformationServicesIllustration ../public/videos/digital-transformation-services.webm",
+    "build:digital-transformation-case-studies": "npm run build:digital-transformation-case-study-ops && npm run build:digital-transformation-case-study-analytics",
+    "build:digital-transformation-case-study-ops": "remotion render --image-format=png --pixel-format=yuva420p --codec=vp9 src/Root.tsx DigitalTransformationCaseStudyOps ../public/videos/digital-transformation-case-study-ops.webm",
+    "build:digital-transformation-case-study-analytics": "remotion render --image-format=png --pixel-format=yuva420p --codec=vp9 src/Root.tsx DigitalTransformationCaseStudyAnalytics ../public/videos/digital-transformation-case-study-analytics.webm",
+    "build:product-development": "npm run build:product-development-hero && npm run build:product-development-showcase && npm run build:product-development-testimonials && npm run build:product-development-building",
+    "build:product-development-hero": "remotion render --image-format=png --pixel-format=yuva420p --codec=vp9 src/Root.tsx ProductDevelopmentHeroScene ../public/videos/product-development-hero.webm",
+    "build:product-development-showcase": "remotion render --image-format=png --pixel-format=yuva420p --codec=vp9 src/Root.tsx ProductDevelopmentShowcaseScene ../public/videos/product-development-showcase.webm",
+    "build:product-development-testimonials": "remotion render --image-format=png --pixel-format=yuva420p --codec=vp9 src/Root.tsx ProductDevelopmentTestimonialsScene ../public/videos/product-development-testimonials.webm",
+    "build:product-development-building": "remotion render --image-format=png --pixel-format=yuva420p --codec=vp9 src/Root.tsx ProductDevelopmentBuildingScene ../public/videos/product-development-building.webm",
+    "build:bg": "remotion render src/Root.tsx BrandBackground ../public/videos/brand-background.mp4",
+    "build:all": "npm run build:hero && npm run build:expertise && npm run build:digital-transformation && npm run build:digital-transformation-services && npm run build:digital-transformation-case-studies && npm run build:product-development && npm run build:bg"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "remotion": "^4.0.0",
+    "@remotion/cli": "^4.0.0"
+  }
+}

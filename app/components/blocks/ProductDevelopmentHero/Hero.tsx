@@ -1,7 +1,9 @@
 import React from "react";
+import { Link } from "@remix-run/react";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
 import { tinaField } from "tinacms/dist/react";
-import { Link } from "@remix-run/react";
+
+import { MediaAsset } from "@components/ui/MediaAsset/MediaAsset";
 import { ProductDevelopmentBlocksProductDevelopmentHero } from "@tina/__generated__/types";
 
 interface ProductDevelopmentHeroProps {
@@ -12,21 +14,19 @@ const ProductDevelopmentHero: React.FC<ProductDevelopmentHeroProps> = ({
   data,
 }) => {
   return (
-    <section className="relative overflow-hidden py-16 lg:py-24 bg-gradient-to-br from-slate-50 via-white to-slate-100/50 border-b border-gray-100">
+    <section className="site-hero">
       {/* Background Decorative Blobs */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-400/5 rounded-full blur-3xl -z-10 pointer-events-none"></div>
-      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-indigo-400/5 rounded-full blur-3xl -z-10 pointer-events-none"></div>
       
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
+      <div className="site-container">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           {/* Text Content */}
           <div className="lg:col-span-7 flex flex-col items-start">
-            <span className="px-3 py-1 rounded-full bg-blue-50 text-blue-600 text-xs font-semibold uppercase tracking-wider mb-6 border border-blue-100">
+            <span className="mb-4 text-sm font-bold text-primary">
               Services &bull; Product Development
             </span>
             <h1
               data-tina-field={tinaField(data, "productDevelopmentHeroTitle")}
-              className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-[1.1] mb-6"
+              className="site-title mb-5"
             >
               {data.productDevelopmentHeroTitle}
             </h1>
@@ -50,7 +50,7 @@ const ProductDevelopmentHero: React.FC<ProductDevelopmentHeroProps> = ({
               <div className="flex flex-wrap gap-4">
                 <Link
                   to={data.productDevelopmentHeroCtaLink}
-                  className="btn btn-primary btn-lg shadow-lg shadow-blue-500/20 hover:shadow-blue-500/30 hover:-translate-y-0.5 transform transition-all duration-200"
+                  className="site-action"
                 >
                   {data.productDevelopmentHeroCtaText}
                   <svg
@@ -73,12 +73,14 @@ const ProductDevelopmentHero: React.FC<ProductDevelopmentHeroProps> = ({
           {/* Image Column */}
           {data.productDevelopmentHeroImage && (
             <div className="lg:col-span-5 relative w-full flex justify-center">
-              <div className="relative w-full max-w-md lg:max-w-none aspect-[4/3] sm:aspect-video lg:aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl border border-slate-200/50">
-                <img
-                  data-tina-field={tinaField(data, "productDevelopmentHeroImage")}
+              <div
+                className="relative w-full max-w-md lg:max-w-none aspect-[4/3] sm:aspect-video lg:aspect-[4/3] rounded-2xl overflow-hidden border border-slate-200 border border-slate-200/50"
+                data-tina-field={tinaField(data, "productDevelopmentHeroImage")}
+              >
+                <MediaAsset
                   src={data.productDevelopmentHeroImage}
                   alt={data.productDevelopmentHeroTitle || "Product Development"}
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                  className="w-full h-full object-cover "
                 />
               </div>
             </div>

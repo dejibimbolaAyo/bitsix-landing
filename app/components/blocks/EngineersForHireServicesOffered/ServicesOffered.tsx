@@ -7,8 +7,8 @@ interface EngineersForHireServicesOfferedProps {
 
 const EngineersForHireServicesOffered: React.FC<EngineersForHireServicesOfferedProps> = ({ data }) => {
   return (
-    <section className="px-8 py-12 lg:py-16">
-      <div className="container mx-auto">
+    <section className="site-section bg-paper">
+      <div className="site-container">
         <h2 className="text-3xl md:text-4xl font-bold mb-4">{data.engineersForHireServicesOfferedTitle}</h2>
         {data.engineersForHireServicesOfferedSubtitle && (
           <h3 className="text-xl md:text-2xl mb-6">{data.engineersForHireServicesOfferedSubtitle}</h3>
@@ -29,7 +29,7 @@ const EngineersForHireServicesOffered: React.FC<EngineersForHireServicesOfferedP
           <div className="mt-8">
             <a 
               href={data.engineersForHireServicesOfferedCtaLink}
-              className="px-6 py-3 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition"
+              className="site-action"
             >
               {data.engineersForHireServicesOfferedCtaText}
             </a>

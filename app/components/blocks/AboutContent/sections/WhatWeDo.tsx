@@ -81,7 +81,7 @@ const WhatWeDo: React.FC<WhatWeDoProps> = ({ data }) => {
                     data-tina-field={tinaField(service)}
                   >
                     {/* Icon */}
-                    <div className="flex-shrink-0 w-16 h-16 rounded-2xl bg-gradient-to-br from-primary/10 to-secondary/5 flex items-center justify-center group-hover:from-primary/15 group-hover:to-secondary/10 transition-all duration-300">
+                    <div className="flex-shrink-0 w-16 h-16 rounded-2xl bg-gradient-to-br from-primary/10 to-primary/5 flex items-center justify-center group-hover:from-primary/15 group-hover:to-primary/5 transition-all duration-300">
                       <ServiceIcon service={service.title || ""} />
                     </div>
 

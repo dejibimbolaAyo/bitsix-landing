@@ -1,6 +1,7 @@
 import React from "react";
 import { tinaField } from "tinacms/dist/react";
 
+import { MediaAsset } from "@components/ui/MediaAsset/MediaAsset";
 import type { DigitalTransformationBlocksCaseStudies } from "tina/__generated__/types";
 
 interface CaseStudiesProps {
@@ -8,6 +9,11 @@ interface CaseStudiesProps {
 }
 
 const CaseStudies: React.FC<CaseStudiesProps> = ({ data }) => {
+  const fallbackVideos = [
+    "/videos/digital-transformation-case-study-ops.webm",
+    "/videos/digital-transformation-case-study-analytics.webm",
+  ];
+
   return (
     <section className="py-20 bg-white">
       <div className="container mx-auto px-4">
@@ -30,20 +36,15 @@ const CaseStudies: React.FC<CaseStudiesProps> = ({ data }) => {
                 data-tina-field={tinaField(data.studies?.[index])}
               >
                 {/* Image */}
-                <div
-                  className="relative h-64 w-full"
-                  data-tina-field={tinaField(study, "studyImage")}
-                >
-                  <img
-                    src={
-                      study?.studyImage ||
-                      (index === 0
-                        ? "/images/case-studies/workspace-laptop.jpg"
-                        : "/images/case-studies/flowers-vases.jpg")
-                    }
-                    alt={study?.studyTitle || "Case study image"}
-                    className="w-full h-full object-cover"
-                  />
+              <div
+                className="relative h-64 w-full bg-slate-50"
+                data-tina-field={tinaField(study, "studyImage")}
+              >
+                <MediaAsset
+                  src={study?.studyImage || fallbackVideos[index % fallbackVideos.length]}
+                  alt={study?.studyTitle || "Case study illustration"}
+                  className="w-full h-full object-cover"
+                />
                 </div>
 
                 {/* Content */}

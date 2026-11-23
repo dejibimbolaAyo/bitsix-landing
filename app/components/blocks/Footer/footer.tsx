@@ -69,7 +69,7 @@ const Footer: React.FC<FooterProps> = ({ data }) => {
           className="absolute -right-24 top-1/2 -translate-y-1/2 w-[300px] h-auto opacity-10 rotate-12 select-none pointer-events-none"
         />
       </div>
-      <div className="max-w-7xl mx-auto px-4 py-8 relative">
+      <div className="site-container py-8 relative">
         <div className="grid md:grid-cols-6 gap-12">
           {/* Newsletter Section */}
           <div className="md:col-span-2">
@@ -125,7 +125,8 @@ const Footer: React.FC<FooterProps> = ({ data }) => {
                     <div key={index}>
                       <Link
                         to={item?.href ?? ""}
-                        className="text-sm text-neutral hover:text-warning transition-colors"
+                        reloadDocument={item?.href === "/resources/case-studies"}
+                        className="text-sm text-neutral hover:text-primary hover:underline transition-colors"
                         data-tina-field={tinaField(item, "name")}
                       >
                         {item?.name ?? ""}
@@ -143,7 +144,8 @@ const Footer: React.FC<FooterProps> = ({ data }) => {
                     <div key={index}>
                       <Link
                         to={item?.href ?? ""}
-                        className="text-sm text-neutral hover:text-warning transition-colors"
+                        reloadDocument={item?.href === "/resources/case-studies"}
+                        className="text-sm text-neutral hover:text-primary hover:underline transition-colors"
                         data-tina-field={tinaField(item, "name")}
                       >
                         {item?.name ?? ""}
@@ -153,23 +155,31 @@ const Footer: React.FC<FooterProps> = ({ data }) => {
                 </nav>
               </div>
 
-              {/* Connect With Us */}
               <div>
                 <h3 className="font-semibold mb-3 text-sm">Connect With Us</h3>
                 <div className="space-y-1.5">
-                  {socialLinks?.map((item, index: number) => (
-                    <a
-                      key={index}
-                      href={item?.href ?? ""}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center text-sm text-neutral hover:text-warning transition-colors"
-                      data-tina-field={tinaField(item, "name")}
+                  {socialLinks?.length ? (
+                    socialLinks.map((item, index: number) => (
+                      <a
+                        key={index}
+                        href={item?.href ?? ""}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center text-sm text-neutral hover:text-primary hover:underline transition-colors"
+                        data-tina-field={tinaField(item, "name")}
+                      >
+                        <SocialIcon platform={item?.icon ?? ""} />
+                        <span className="ml-2">{item?.name ?? ""}</span>
+                      </a>
+                    ))
+                  ) : (
+                    <Link
+                      to="/contact#contact-form"
+                      className="text-sm text-neutral hover:text-primary hover:underline transition-colors"
                     >
-                      <SocialIcon platform={item?.icon ?? ""} />
-                      <span className="ml-2">{item?.name ?? ""}</span>
-                    </a>
-                  ))}
+                      Send us a message
+                    </Link>
+                  )}
                 </div>
               </div>
             </div>
@@ -178,30 +188,13 @@ const Footer: React.FC<FooterProps> = ({ data }) => {
 
         {/* Bottom Bar */}
         <div className="mt-8 pt-6 border-t border-base-content/10">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-3">
+          <div className="flex justify-center md:justify-start">
             <p
               className="text-sm text-neutral"
               data-tina-field={tinaField(footer, "copyright")}
             >
               {copyright}
             </p>
-            <div className="flex gap-4 text-sm text-neutral">
-              <Link
-                to="/privacy-policy"
-                className="hover:text-warning transition-colors"
-              >
-                Privacy Policy
-              </Link>
-              <Link
-                to="/terms-of-service"
-                className="hover:text-warning transition-colors"
-              >
-                Terms of Service
-              </Link>
-              <button className="hover:text-warning transition-colors">
-                Cookies Settings
-              </button>
-            </div>
           </div>
         </div>
       </div>

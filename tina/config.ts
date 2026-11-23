@@ -7,15 +7,15 @@ const branch =
   process.env.GITHUB_BRANCH ||
   process.env.VERCEL_GIT_COMMIT_REF ||
   process.env.HEAD ||
-  "deji/feat-add-home-layout";
+  "main";
 
 export default defineConfig({
   branch,
 
   // Get this from tina.io
-  clientId: process.env.TINA_CLIENT_ID || "placeholder",
+  clientId: process.env.TINA_CLIENT_ID || "",
   // Get this from tina.io
-  token: process.env.TINA_TOKEN || "placeholder",
+  token: process.env.TINA_TOKEN || "",
 
   build: {
     outputFolder: "admin",
