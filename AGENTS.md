@@ -78,7 +78,14 @@ Default section order:
 
 When the user requests a durable behavior change, record it here or in the relevant child AGENTS.md
 
+## Deployment
+
+- Open pull requests against `main`. Production deployments run from merged `main` commits through GitHub Actions and Wrangler. See `.github/AGENTS.md` for the workflow contract.
+
 ## Child DOX Index
+
+### .github/
+GitHub Actions workflow for pull request checks and Cloudflare Pages production deployments.
 
 ### app/
 Core Remix + TinaCMS application — routes, components, entry points, and styles.

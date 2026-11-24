@@ -1,0 +1,84 @@
+name: Cloudflare Pages
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  check:
+    name: Validate site build
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm exec -- tinacms build --local --datalayer-port 9005
+      - run: npm run typecheck
+      - run: npm exec -- remix vite:build
+
+  deploy:
+    name: Deploy production
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    environment:
+      name: production
+      url: https://bitsix.online
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Build for production
+        env:
+          GITHUB_BRANCH: main
+          TINA_CLIENT_ID: ${{ vars.TINA_CLIENT_ID }}
+          TINA_TOKEN: ${{ secrets.TINA_TOKEN }}
+        run: |
+          : "${TINA_CLIENT_ID:?Set the production TINA_CLIENT_ID variable}"
+          : "${TINA_TOKEN:?Set the production TINA_TOKEN secret}"
+          npm run build
+      - run: npm run typecheck
+      - name: Publish Remix to Cloudflare Pages
+        env:
+          GH_TOKEN: ${{ github.token }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        run: |
+          : "${CLOUDFLARE_ACCOUNT_ID:?Set the production CLOUDFLARE_ACCOUNT_ID variable}"
+          : "${CLOUDFLARE_API_TOKEN:?Set the production CLOUDFLARE_API_TOKEN secret}"
+          main_sha=$(gh api "repos/$GITHUB_REPOSITORY/git/ref/heads/main" --jq .object.sha)
+          if [ "$main_sha" != "$GITHUB_SHA" ]; then
+            echo "Skipping deployment because main has advanced."
+            exit 0
+          fi
+          npm exec -- wrangler pages deploy ./build/client \
+            --project-name bitsix-landing-page --branch main \
+            --commit-hash "$GITHUB_SHA" --commit-dirty=false
+      - name: Check public routes
+        run: |
+          for route in / /about/company /contact; do
+            curl --fail --silent --show-error --retry 5 --retry-all-errors \
+              --max-time 15 "https://bitsix.online$route" -o /dev/null
+          done
