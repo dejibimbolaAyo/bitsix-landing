@@ -2,6 +2,7 @@ import { Link } from "@remix-run/react";
 import React from "react";
 import { tinaField } from "tinacms/dist/react";
 
+import NewsletterSignup from "@app/components/ui/NewsletterSignup";
 import { publicContactEmail } from "@app/site-contact";
 import { FooterQuery } from "@tina/__generated__/types";
 
@@ -56,19 +57,7 @@ const Footer: React.FC<FooterProps> = ({ data }) => {
             >
               {newsletterDescription}
             </p>
-            <form className="space-y-3">
-              <input
-                type="email"
-                placeholder="Your email here"
-                className="w-full px-3 py-1.5 rounded border border-base-content/10 bg-transparent text-sm"
-              />
-              <button
-                type="submit"
-                className="w-full px-3 py-1.5 bg-primary text-primary-content rounded hover:bg-primary/90 transition-colors text-sm"
-              >
-                Subscribe
-              </button>
-            </form>
+            <NewsletterSignup />
             <p
               className="text-xs text-neutral mt-2"
               data-tina-field={tinaField(footer, "newsletterDisclaimer")}

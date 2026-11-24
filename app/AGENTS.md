@@ -26,6 +26,8 @@ Core Remix + TinaCMS application — routes, page components, shared UI, entry p
 
 - The contact action creates a Zoho CRM Lead only after server-side validation. Keep `ZOHO_ACCOUNTS_URL`, `ZOHO_CLIENT_ID`, `ZOHO_CLIENT_SECRET`, and `ZOHO_REFRESH_TOKEN` in Cloudflare Pages runtime bindings. Use the organization’s regional Accounts URL and a Zoho Self Client refresh token scoped to `ZohoCRM.modules.leads.CREATE`. The contact page loads independently of these bindings.
 
+- The site footer and blog newsletter block use `NewsletterSignup` to embed the active Zoho Campaigns form for the BitSix Newsletter mailing list. Update both the embed and hosted form links together if the Zoho form changes.
+
 ## Work Guidance
 
 - Adding a new page: create folder under `routes/`, add `route.tsx` and `page.tsx`, register route in `vite.config.ts`, add TinaCMS collection if needed, create block components if needed
