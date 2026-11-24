@@ -125,7 +125,7 @@ const Footer: React.FC<FooterProps> = ({ data }) => {
                     href={`mailto:${publicContactEmail}`}
                     className="block text-sm text-neutral underline underline-offset-4 hover:text-primary"
                   >
-                    {publicContactEmail}
+                    Mail us
                   </a>
                   <Link
                     to="/contact#contact-form"
