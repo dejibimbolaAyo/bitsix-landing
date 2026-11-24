@@ -22,7 +22,7 @@ Core Remix + TinaCMS application — routes, page components, shared UI, entry p
 - Fonts: Comfortaa and Playfair Display (loaded in root.tsx via Google Fonts preconnect)
 - Import groups (enforced by ESLint): builtin/external first, then internal/parent/sibling/index, separated by newline
 
-- Use the address in `site-contact.ts` as the sole public contact detail on the contact page and in the footer. Show the contact form below the email on the contact page and link to it from the footer.
+- Use the address in `site-contact.ts` only as the destination of the footer’s “Mail us” link. Keep the contact form on the contact page and link to it from the footer.
 
 - The contact action creates a Zoho CRM Lead only after server-side validation. Keep `ZOHO_ACCOUNTS_URL`, `ZOHO_CLIENT_ID`, `ZOHO_CLIENT_SECRET`, and `ZOHO_REFRESH_TOKEN` in Cloudflare Pages runtime bindings. Use the organization’s regional Accounts URL and a Zoho Self Client refresh token scoped to `ZohoCRM.modules.leads.CREATE`. The contact page loads independently of these bindings.
 

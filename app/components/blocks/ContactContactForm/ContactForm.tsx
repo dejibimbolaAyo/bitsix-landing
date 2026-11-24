@@ -2,7 +2,6 @@ import { Form, useActionData, useNavigation } from "@remix-run/react";
 import React, { useEffect } from "react";
 import toast from "react-hot-toast";
 
-import { publicContactEmail } from "@app/site-contact";
 import type { ContactBlocksContactContactForm } from "@tina/__generated__/types";
 
 type ActionData = {
@@ -82,15 +81,7 @@ const ContactContactForm: React.FC<{
   return (
     <section className="site-section scroll-mt-18 bg-paper" id="contact-form">
       <div className="site-container">
-        <div className="mx-auto max-w-2xl space-y-8">
-          <p className="text-center">
-            <a
-              href={`mailto:${publicContactEmail}`}
-              className="font-semibold text-primary underline underline-offset-4"
-            >
-              {publicContactEmail}
-            </a>
-          </p>
+        <div className="mx-auto max-w-2xl">
           <div className="rounded-2xl bg-white p-5 shadow-sm sm:p-8">
             <div className="space-y-8">
               <div>
