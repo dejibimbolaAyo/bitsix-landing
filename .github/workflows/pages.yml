@@ -28,8 +28,12 @@ jobs:
         with:
           node-version: 22
           cache: npm
+          cache-dependency-path: |
+            package-lock.json
+            remotion/package-lock.json
       - run: npm ci
-      - run: npm exec -- tinacms build --local --datalayer-port 9005
+      - run: npm ci --prefix remotion
+      - run: npm exec -- tinacms build --local --skip-cloud-checks --datalayer-port 9005
       - run: npm run typecheck
       - run: npm exec -- remix vite:build
 
@@ -49,7 +53,11 @@ jobs:
         with:
           node-version: 22
           cache: npm
+          cache-dependency-path: |
+            package-lock.json
+            remotion/package-lock.json
       - run: npm ci
+      - run: npm ci --prefix remotion
       - name: Build for production
         env:
           GITHUB_BRANCH: main
